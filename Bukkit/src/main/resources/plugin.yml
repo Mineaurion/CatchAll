@@ -1,0 +1,45 @@
+name: PlauginDiversBukkit
+version: 1.0
+author: THEJean_Kevin
+main: com.mineaurion.Bukkit.Main
+commands:
+    lastlogin:
+      description: Check player > x mois.
+      usage: /lastlogin [nombredemois]
+    lancetomate:
+      description: Lance une snowball sur un joueur.
+      usage: /lancetomate <Player>
+    MineaurionReload:
+      description: Reload le plugin.
+    webhook:
+      description: Minecraft To Discord.
+    maintenance:
+      description: Met le serveur en maintenance.
+    spider:
+    smoke:
+    thunder:
+    lavapop:
+    m_novice:
+    m_chat:
+    row:
+
+permissions:
+    addons.*:
+      description: Donne acces a toute les permissions
+      default: op
+      children:
+        addons.effect.*: true
+        addons.novice: true
+        addons.chat: true
+        addons.onMe: true
+        addons.onHim: true
+        addons.troll: true
+        addons.canflood: true
+        addons.usebow: true
+    addons.effect.*:
+      description: Donne acces a toute les permissions
+      default: op
+      children:
+        addons.effect.lavapop: true
+        addons.effect.thunder: true
+        addons.effect.smoke: true
