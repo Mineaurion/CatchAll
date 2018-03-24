@@ -21,16 +21,17 @@ public class CommandPampersss implements CommandExecutor {
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		Player player = (Player) src;
 		Location<World> loc = player.getLocation();
-		String type = args.<String>getOne("type").orElse("");
+		String type = args.<String>getOne("type").orElse("non");
 		int radius = args.<Integer>getOne("radius").orElse(20);
 		int removeditem = 0;
 		int removedmob = 0;
 		int removedanimal = 0;
-		if (!src.hasPermission("mineaurion.pampersss.radius")) {
+		
+		if (!player.hasPermission("mineaurion.pampersss.radius")) {
 			radius = 20;
 		}
-
-		if (type.equalsIgnoreCase("all") && src.hasPermission("mineaurion.pampersss.all")) {
+		
+		if (type.equalsIgnoreCase("all") && player.hasPermission("mineaurion.pampersss.all")) {
 			for (Entity entity : loc.getExtent().getEntities()) {
 				if(entity instanceof Player) { continue;}
 				if (entity.getLocation().getBlockPosition().distance(loc.getBlockPosition()) < radius) {
@@ -38,7 +39,7 @@ public class CommandPampersss implements CommandExecutor {
 					removeditem++;
 				}
 			}
-			player.sendMessage(Main.addColor("{{GRAY}}" + removeditem + " entité supprimés"));
+			player.sendMessage(Main.addColor("{{GRAY}}" + removeditem + " entités supprimés"));
 		} else {
 			for (Entity entity : loc.getExtent().getEntities()) {
 				if (entity instanceof Item) {

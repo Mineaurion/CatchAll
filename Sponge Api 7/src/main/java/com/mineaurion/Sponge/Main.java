@@ -107,8 +107,8 @@ public class Main {
 		Sponge.getCommandManager().register(this, cmdMaintenance, "maintenance");
 
 		// Remove Item
-		CommandSpec cmdpampersss = CommandSpec.builder().permission("mineaurion.pampersss")
-				.arguments(GenericArguments.optional(GenericArguments.string(Text.of("type")),GenericArguments.integer(Text.of("radius"))))
+		CommandSpec cmdpampersss = CommandSpec.builder().permission("mineaurion.pampersss.command")
+				.arguments(GenericArguments.optional(GenericArguments.string(Text.of("type"))),GenericArguments.optional(GenericArguments.integer(Text.of("radius"))))
 				.executor(new CommandPampersss()).build();
 		Sponge.getCommandManager().register(this, cmdpampersss, "pampersss");
 
