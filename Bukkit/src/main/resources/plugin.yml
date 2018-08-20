@@ -1,4 +1,4 @@
-name: PlauginDiversBukkit
+name: PluginDiversBukkit
 version: 1.0
 author: THEJean_Kevin
 main: com.mineaurion.Bukkit.Main
@@ -22,6 +22,7 @@ commands:
     m_novice:
     m_chat:
     row:
+    foundentiter:
 
 permissions:
     addons.*:

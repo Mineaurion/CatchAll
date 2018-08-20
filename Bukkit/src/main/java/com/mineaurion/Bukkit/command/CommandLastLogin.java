@@ -29,17 +29,26 @@ public class CommandLastLogin implements CommandExecutor {
 				for (OfflinePlayer P : offlinePlayer) {
 					long lastlog = P.getLastPlayed();
 					Calendar moisdernier = Calendar.getInstance();
+					Calendar moisBetweend = Calendar.getInstance();
 					if(args.length == 1) {
-					moisdernier.add(Calendar.MONTH, -1 * Integer.valueOf(args[0]));
+						moisdernier.add(Calendar.MONTH, -1 * Integer.valueOf(args[0]));
+					}
+					else if (args.length == 2){
+						moisBetweend.add(Calendar.MONTH, 1 * Integer.valueOf(args[1]));
 					}
 					else {
 						moisdernier.add(Calendar.MONTH, -1);
 					}
 					Calendar DateLog = Calendar.getInstance();
 					DateLog.setTime(new Date(lastlog));
-
-					if (DateLog.before(moisdernier)) {
-						Player.add(P.getName());
+					if (args.length == 2) {
+						if (DateLog.before(moisdernier) && DateLog.after(moisBetweend)) {
+							Player.add(P.getName());
+						}
+					}else {
+						if (DateLog.before(moisdernier)) {
+							Player.add(P.getName());
+						}
 					}
 				}
 				File dataFile = new File(Main.getInstance().getDataFolder()+File.separator+"PlayerAFK.yml");

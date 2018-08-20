@@ -17,6 +17,8 @@ public class CommandMaintenance implements CommandExecutor {
 				Main.getInstance().getConfig().set("Maintenance", true);
 				Bukkit.broadcast("§cAttention le serveur est maintenant en maintenance", "mineaurion.fr");
 				Bukkit.broadcast("§cWArning, the server is now in maintenance", "mineaurion.en");
+				Main.sendmessage("§cAttention le serveur est maintenant en maintenance", "console");
+				
 				for(Player p : Bukkit.getServer().getOnlinePlayers()) {
 					if(!p.hasPermission("Maintenance.bypass")) {
 						p.kickPlayer("Maintenance");
@@ -25,6 +27,7 @@ public class CommandMaintenance implements CommandExecutor {
 			}else {
 				Main.getInstance().getConfig().set("Maintenance", false);
 				Bukkit.broadcastMessage("Le serveur n'est plus en maintenance");
+				Main.sendmessage("Le serveur n'est plus en maintenance", "console");
 			}
 
 		} else {

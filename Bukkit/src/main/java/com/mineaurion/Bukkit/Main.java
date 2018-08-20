@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mineaurion.Bukkit.command.CommandAddons;
+import com.mineaurion.Bukkit.command.CommandEntiter;
 import com.mineaurion.Bukkit.command.CommandLanceTomate;
 import com.mineaurion.Bukkit.command.CommandLastLogin;
 import com.mineaurion.Bukkit.command.CommandMaintenance;
@@ -83,6 +84,7 @@ public class Main extends JavaPlugin {
 		instance.getCommand("lastlogin").setExecutor(new CommandLastLogin());
 		// lanceTomate
 		instance.getCommand("lancetomate").setExecutor(new CommandLanceTomate());
+		instance.getCommand("foundentiter").setExecutor(new CommandEntiter());
 		// MinecraftToDiscord
 		instance.getCommand("webhook").setExecutor(new CommandWebhook());
 		//Maintenance

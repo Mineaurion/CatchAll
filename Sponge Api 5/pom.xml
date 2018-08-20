@@ -4,10 +4,10 @@
 
 	<groupId>com.mineaurion</groupId>
 	<artifactId>mineaurionSponge</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mineaurionSponge</name>
+	<name>mineaurionSpongeAPI5</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -58,7 +58,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>MineaurionSponge</finalName>
+		<finalName>MineaurionSpongeAPI5</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
