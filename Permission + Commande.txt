@@ -1,4 +1,4 @@
-BUKKIT :
+﻿BUKKIT :
 
 permission : mineaurion.reload
 /MineaurionReload -> Reload le plugin
@@ -19,6 +19,9 @@ permission : mineaurion.maintenance
 permission : Maintenance.bypass
 Permet de ce connecter lors de la maintenance
 
+
+donateur : mineaurion.donateurCommand
+/donateur -> fait la meme chose que la maintenance mais seulement pour les donateurs avec la permission mineaurion.donateur
 
 + commande du plugin ADDONS
 
@@ -47,3 +50,6 @@ permission : mineaurion.pampersss
 									-> passif : permet de supprimer en plus les animaux
 									-> all : permet de supprimer toutes les entités besoin de la permission : mineaurion.pampersss.all
 									-> radius : permet de choisir le radius besoin de la permission : mineaurion.pampersss.radius
+
+donateur : mineaurion.donateurCommand
+/donateur -> fait la meme chose que la maintenance mais seulement pour les donateurs avec la permission mineaurion.donateur

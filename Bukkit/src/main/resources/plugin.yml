@@ -23,6 +23,7 @@ commands:
     m_chat:
     row:
     foundentiter:
+    donateur:
 
 permissions:
     addons.*:
