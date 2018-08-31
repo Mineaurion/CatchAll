@@ -21,6 +21,7 @@ import org.spongepowered.api.text.format.TextStyle;
 import org.spongepowered.api.text.format.TextStyles;
 
 import com.google.inject.Inject;
+import com.mineaurion.Sponge.command.CommandDonator;
 import com.mineaurion.Sponge.command.CommandHandShow;
 import com.mineaurion.Sponge.command.CommandMaintenance;
 import com.mineaurion.Sponge.command.CommandPampersss;
@@ -73,6 +74,12 @@ public class Main {
 			if (Node.getNode("Maintenance").isVirtual()) {
 				setValut(false, "Maintenance");
 			}
+			if(Node.getNode("AccesDonateur").isVirtual()) {
+				setValut(false,"AccesDonateur");
+			}
+			if(Node.getNode("reservedSlot").isVirtual()) {
+				setValut(5,"reservedSlot");
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -105,6 +112,11 @@ public class Main {
 		CommandSpec cmdMaintenance = CommandSpec.builder().permission("mineaurion.maintenance")
 				.executor(new CommandMaintenance()).build();
 		Sponge.getCommandManager().register(this, cmdMaintenance, "maintenance");
+		
+		// Donateur
+				CommandSpec cmddonator = CommandSpec.builder().permission("mineaurion.donateurCommand")
+						.executor(new CommandDonator()).build();
+				Sponge.getCommandManager().register(this, cmddonator, "donateur");
 
 		// Remove Item
 		CommandSpec cmdpampersss = CommandSpec.builder().permission("mineaurion.pampersss.command")

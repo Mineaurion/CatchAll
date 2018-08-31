@@ -18,6 +18,7 @@ public class CommandEntiter implements CommandExecutor {
 
 	public Map<Integer,String> lagg = new HashMap<Integer,String>();
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 			lagg.clear();

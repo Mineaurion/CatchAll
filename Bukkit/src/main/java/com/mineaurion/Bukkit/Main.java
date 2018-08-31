@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mineaurion.Bukkit.command.CommandAddons;
+import com.mineaurion.Bukkit.command.CommandDonateur;
 import com.mineaurion.Bukkit.command.CommandEntiter;
 import com.mineaurion.Bukkit.command.CommandLanceTomate;
 import com.mineaurion.Bukkit.command.CommandLastLogin;
@@ -74,9 +75,14 @@ public class Main extends JavaPlugin {
 
 		if (!config.contains("Maintenance"))
 			config.set("Maintenance", false);
-
+		if (!config.contains("AccesDonateur"))
+			config.set("AccesDonateur", false);
+		if(!config.contains("reservedSlot")) 
+			config.set("reservedSlot", 5);
+		
 		saveConfig();
 	}
+	
 
 	public void initCommand() {
 		instance.getCommand("MineaurionReload").setExecutor(new CommandReload());
@@ -89,6 +95,8 @@ public class Main extends JavaPlugin {
 		instance.getCommand("webhook").setExecutor(new CommandWebhook());
 		//Maintenance
 		instance.getCommand("maintenance").setExecutor(new CommandMaintenance());
+		//Donateur
+		instance.getCommand("donateur").setExecutor(new CommandDonateur());
 		//Addons
 		instance.getCommand("m_chat").setExecutor(new CommandAddons());
 		instance.getCommand("spider").setExecutor(new CommandAddons());
