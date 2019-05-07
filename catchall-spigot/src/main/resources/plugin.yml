@@ -11,9 +11,9 @@ commands:
     permission: catchall.reload
     usage: "Usage : /<command>"
   lastlogin:
-    description: "Write a file with players offline since specified month (default: 1 month)"
+    description: "Write a file with players offline between MIN and MAX months ago (default: 1 and 6 months)"
     permission: catchall.lastlogin
-    usage: "Usage : /<command> [month]"
+    usage: "Usage : /<command> [minMonth] [maxMonth]"
   webhook:
     description: "Send message under discord webhook"
     permission: catchall.webhook
