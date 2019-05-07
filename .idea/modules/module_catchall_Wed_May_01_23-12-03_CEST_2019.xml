@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_catchall" default="compile.module.catchall">
+  <dirname property="module.catchall.basedir" file="${ant.file.module_catchall}"/>
+  
+  <property name="module.jdk.home.catchall" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.catchall" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.catchall" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.catchall" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="catchall.output.dir" value="${module.catchall.basedir}/../../out/production/catchall"/>
+  <property name="catchall.testoutput.dir" value="${module.catchall.basedir}/../../out/test/catchall"/>
+  
+  <path id="catchall.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="catchall.module.production.classpath">
+    <path refid="${module.jdk.classpath.catchall}"/>
+  </path>
+  
+  <path id="catchall.runtime.production.module.classpath">
+    <pathelement location="${catchall.output.dir}"/>
+  </path>
+  
+  <path id="catchall.module.classpath">
+    <path refid="${module.jdk.classpath.catchall}"/>
+    <pathelement location="${catchall.output.dir}"/>
+  </path>
+  
+  <path id="catchall.runtime.module.classpath">
+    <pathelement location="${catchall.testoutput.dir}"/>
+    <pathelement location="${catchall.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.catchall">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.catchall">
+    <patternset refid="excluded.from.module.catchall"/>
+  </patternset>
+  
+  
+  <target name="compile.module.catchall" depends="compile.module.catchall.production,compile.module.catchall.tests" description="Compile module catchall"/>
+  
+  <target name="compile.module.catchall.production" depends="register.custom.compilers" description="Compile module catchall; production classes"/>
+  
+  <target name="compile.module.catchall.tests" depends="register.custom.compilers,compile.module.catchall.production" description="compile module catchall; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.catchall" description="cleanup module">
+    <delete dir="${catchall.output.dir}"/>
+    <delete dir="${catchall.testoutput.dir}"/>
+  </target>
+</project>

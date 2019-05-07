@@ -1,0 +1,30 @@
+name: CatchAll
+version: ${version}
+main: com.mineaurion.catchall.CatchAllSpigot
+
+commands:
+  catchall:
+    description: "Show all commands callable by CatchAll"
+    permission: catchall.help
+  catchall reload:
+    description: "Reload the plugin"
+    permission: catchall.reload
+    usage: "Usage : /<command>"
+  lastlogin:
+    description: "Write a file with players offline since specified month (default: 1 month)"
+    permission: catchall.lastlogin
+    usage: "Usage : /<command> [month]"
+  webhook:
+    description: "Send message under discord webhook"
+    permission: catchall.webhook
+    usage: "Usage : /<command> [channel] [message]"
+  maintenance:
+    description: "Enable/Disable the maintenance server status"
+    permission: catchall.maintenance
+    usage: "Usage : /<command>"
+  donateur:
+    description: "Enable/Disable the donator server status"
+    permission: catchall.donator
+    usage: "Usage : /<command>"
+
+permissions: {}

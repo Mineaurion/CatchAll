@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_catchall.catchall-common.test" default="compile.module.catchall.catchall-common.test">
+  <dirname property="module.catchall.catchall-common.test.basedir" file="${ant.file.module_catchall.catchall-common.test}"/>
+  
+  <property name="module.jdk.home.catchall.catchall-common.test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.catchall.catchall-common.test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.catchall.catchall-common.test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.catchall.catchall-common.test" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="catchall.catchall-common.test.output.dir" value="undefined"/>
+  <property name="catchall.catchall-common.test.testoutput.dir" value="${module.catchall.catchall-common.test.basedir}/../../../catchall-common/build/classes/java/test"/>
+  
+  <path id="catchall.catchall-common.test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="catchall.catchall-common.test.module.production.classpath">
+    <path refid="${module.jdk.classpath.catchall.catchall-common.test}"/>
+    <pathelement location="${catchall.catchall-common.main.output.dir}"/>
+  </path>
+  
+  <path id="catchall.catchall-common.test.runtime.production.module.classpath">
+    <path refid="catchall.catchall-common.main.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="catchall.catchall-common.test.module.classpath">
+    <path refid="${module.jdk.classpath.catchall.catchall-common.test}"/>
+    <pathelement location="${catchall.catchall-common.main.output.dir}"/>
+  </path>
+  
+  <path id="catchall.catchall-common.test.runtime.module.classpath">
+    <pathelement location="${catchall.catchall-common.test.testoutput.dir}"/>
+    <path refid="catchall.catchall-common.main.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.catchall.catchall-common.test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.catchall.catchall-common.test">
+    <patternset refid="excluded.from.module.catchall.catchall-common.test"/>
+  </patternset>
+  
+  <path id="catchall.catchall-common.test.module.test.sourcepath">
+    <dirset dir="${module.catchall.catchall-common.test.basedir}/../../../catchall-common/src/test">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.catchall.catchall-common.test" depends="compile.module.catchall.catchall-common.test.production,compile.module.catchall.catchall-common.test.tests" description="Compile module catchall.catchall-common.test"/>
+  
+  <target name="compile.module.catchall.catchall-common.test.production" depends="register.custom.compilers,compile.module.catchall.catchall-common.main" description="Compile module catchall.catchall-common.test; production classes"/>
+  
+  <target name="compile.module.catchall.catchall-common.test.tests" depends="register.custom.compilers,compile.module.catchall.catchall-common.test.production" description="compile module catchall.catchall-common.test; test classes" unless="skip.tests">
+    <mkdir dir="${catchall.catchall-common.test.testoutput.dir}"/>
+    <javac2 destdir="${catchall.catchall-common.test.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.catchall.catchall-common.test}/javac">
+      <compilerarg line="${compiler.args.catchall.catchall-common.test}"/>
+      <bootclasspath refid="catchall.catchall-common.test.module.bootclasspath"/>
+      <classpath refid="catchall.catchall-common.test.module.classpath"/>
+      <src refid="catchall.catchall-common.test.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.catchall.catchall-common.test"/>
+    </javac2>
+    
+    <copy todir="${catchall.catchall-common.test.testoutput.dir}">
+      <fileset dir="${module.catchall.catchall-common.test.basedir}/../../../catchall-common/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.catchall.catchall-common.test.basedir}/../../../catchall-common/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.catchall.catchall-common.test" description="cleanup module">
+    <delete dir="${catchall.catchall-common.test.output.dir}"/>
+    <delete dir="${catchall.catchall-common.test.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,54 @@
+repositories {
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
+    maven {
+        name = 'lombok'
+        url = 'org.projectlombok'
+    }
+    maven {
+        name = 'gson'
+        url = 'com.google.code.gson'
+    }
+}
+
+dependencies {
+    compile project(':catchall-common')
+    compile 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    //compile 'me.clip:placeholderapi:2.9.2'
+    compile 'com.github.kevinsawicki:http-request:-SNAPSHOT'
+    compile 'com.github.MrPowerGamerBR:TemmieWebhook:-SNAPSHOT'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        expand 'version': version
+    }
+}
+
+shadowJar {
+    dependencies {
+        include(dependency(':catchall-common'))
+        include(dependency('com.google.code.gson:gson'))
+        include(dependency('com.github.kevinsawicki:http-request'))
+        include(dependency('com.github.MrPowerGamerBR:TemmieWebhook:-SNAPSHOT'))
+    }
+}
+
+task installJar(type: Copy) {
+    from "./build/libs/catchall-spigot-" + version + "-all.jar"
+    into '../../../Server/Spigot/plugins'
+}
+
+installJar.dependsOn shadowJar;
+installJar.mustRunAfter(shadowJar);
+

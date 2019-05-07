@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_catchall.catchall-spigot.test" default="compile.module.catchall.catchall-spigot.test">
+  <dirname property="module.catchall.catchall-spigot.test.basedir" file="${ant.file.module_catchall.catchall-spigot.test}"/>
+  
+  <property name="module.jdk.home.catchall.catchall-spigot.test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.catchall.catchall-spigot.test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.catchall.catchall-spigot.test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.catchall.catchall-spigot.test" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="catchall.catchall-spigot.test.output.dir" value="undefined"/>
+  <property name="catchall.catchall-spigot.test.testoutput.dir" value="${module.catchall.catchall-spigot.test.basedir}/../../../catchall-spigot/build/classes/java/test"/>
+  
+  <path id="catchall.catchall-spigot.test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="catchall.catchall-spigot.test.module.production.classpath">
+    <path refid="${module.jdk.classpath.catchall.catchall-spigot.test}"/>
+    <pathelement location="${catchall.catchall-spigot.main.output.dir}"/>
+    <pathelement location="${catchall.catchall-common.main.output.dir}"/>
+    <path refid="library.gradle:_org.spigotmc:spigot-api:1.12.2-r0.1-snapshot.classpath"/>
+    <path refid="library.gradle:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.gradle:_com.googlecode.json-simple:json-simple:1.1.1.classpath"/>
+    <path refid="library.gradle:_net.md-5:bungeecord-chat:1.12-snapshot.classpath"/>
+    <path refid="library.gradle:_com.google.guava:guava:21.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_org.yaml:snakeyaml:1.19.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.10.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+  </path>
+  
+  <path id="catchall.catchall-spigot.test.runtime.production.module.classpath">
+    <path refid="catchall.catchall-spigot.main.runtime.production.module.classpath"/>
+    <path refid="catchall.catchall-common.main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_org.spigotmc:spigot-api:1.12.2-r0.1-snapshot.classpath"/>
+    <path refid="library.gradle:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.gradle:_com.googlecode.json-simple:json-simple:1.1.1.classpath"/>
+    <path refid="library.gradle:_net.md-5:bungeecord-chat:1.12-snapshot.classpath"/>
+    <path refid="library.gradle:_com.google.guava:guava:21.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_org.yaml:snakeyaml:1.19.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.10.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+  </path>
+  
+  <path id="catchall.catchall-spigot.test.module.classpath">
+    <path refid="${module.jdk.classpath.catchall.catchall-spigot.test}"/>
+    <pathelement location="${catchall.catchall-spigot.main.output.dir}"/>
+    <pathelement location="${catchall.catchall-common.main.output.dir}"/>
+    <path refid="library.gradle:_org.spigotmc:spigot-api:1.12.2-r0.1-snapshot.classpath"/>
+    <path refid="library.gradle:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.gradle:_com.googlecode.json-simple:json-simple:1.1.1.classpath"/>
+    <path refid="library.gradle:_net.md-5:bungeecord-chat:1.12-snapshot.classpath"/>
+    <path refid="library.gradle:_com.google.guava:guava:21.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_org.yaml:snakeyaml:1.19.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.10.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+  </path>
+  
+  <path id="catchall.catchall-spigot.test.runtime.module.classpath">
+    <pathelement location="${catchall.catchall-spigot.test.testoutput.dir}"/>
+    <path refid="catchall.catchall-spigot.main.runtime.module.classpath"/>
+    <path refid="catchall.catchall-common.main.runtime.module.classpath"/>
+    <path refid="library.gradle:_org.spigotmc:spigot-api:1.12.2-r0.1-snapshot.classpath"/>
+    <path refid="library.gradle:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.gradle:_com.googlecode.json-simple:json-simple:1.1.1.classpath"/>
+    <path refid="library.gradle:_net.md-5:bungeecord-chat:1.12-snapshot.classpath"/>
+    <path refid="library.gradle:_com.google.guava:guava:21.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_org.yaml:snakeyaml:1.19.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.10.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.catchall.catchall-spigot.test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.catchall.catchall-spigot.test">
+    <patternset refid="excluded.from.module.catchall.catchall-spigot.test"/>
+  </patternset>
+  
+  <path id="catchall.catchall-spigot.test.module.test.sourcepath">
+    <dirset dir="${module.catchall.catchall-spigot.test.basedir}/../../../catchall-spigot/src/test">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.catchall.catchall-spigot.test" depends="compile.module.catchall.catchall-spigot.test.production,compile.module.catchall.catchall-spigot.test.tests" description="Compile module catchall.catchall-spigot.test"/>
+  
+  <target name="compile.module.catchall.catchall-spigot.test.production" depends="register.custom.compilers,compile.module.catchall.catchall-spigot.main,compile.module.catchall.catchall-common.main" description="Compile module catchall.catchall-spigot.test; production classes"/>
+  
+  <target name="compile.module.catchall.catchall-spigot.test.tests" depends="register.custom.compilers,compile.module.catchall.catchall-spigot.test.production" description="compile module catchall.catchall-spigot.test; test classes" unless="skip.tests">
+    <mkdir dir="${catchall.catchall-spigot.test.testoutput.dir}"/>
+    <javac2 destdir="${catchall.catchall-spigot.test.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.catchall.catchall-spigot.test}/javac">
+      <compilerarg line="${compiler.args.catchall.catchall-spigot.test}"/>
+      <bootclasspath refid="catchall.catchall-spigot.test.module.bootclasspath"/>
+      <classpath refid="catchall.catchall-spigot.test.module.classpath"/>
+      <src refid="catchall.catchall-spigot.test.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.catchall.catchall-spigot.test"/>
+    </javac2>
+    
+    <copy todir="${catchall.catchall-spigot.test.testoutput.dir}">
+      <fileset dir="${module.catchall.catchall-spigot.test.basedir}/../../../catchall-spigot/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.catchall.catchall-spigot.test.basedir}/../../../catchall-spigot/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.catchall.catchall-spigot.test" description="cleanup module">
+    <delete dir="${catchall.catchall-spigot.test.output.dir}"/>
+    <delete dir="${catchall.catchall-spigot.test.testoutput.dir}"/>
+  </target>
+</project>
