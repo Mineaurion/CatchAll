@@ -30,7 +30,7 @@
 *permission:* catchall.mchat <br>
 *usage:* /mchat [to] [message] <br>
 ### Events
-**PlayerLogin** : Check the state (maintenance/donateur) server and check permissions user
-**PlayerJoin** : Print message "+NAME"
-**PlayerQuit** : Print message "-NAME"
+**PlayerLogin** : Check the state (maintenance/donateur) server and check permissions user <br>
+**PlayerJoin** : Print message "+NAME" <br>
+**PlayerQuit** : Print message "-NAME" <br>
 ## Sponge (5 and 7)
