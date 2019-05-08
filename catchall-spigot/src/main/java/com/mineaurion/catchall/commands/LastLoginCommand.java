@@ -65,9 +65,9 @@ public class LastLoginCommand implements CommandExecutor {
 
         List<String> players = new ArrayList<String>();
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, -minMonth);
+        calendar.add(Calendar.SECOND, -minMonth);
         minTs = calendar.getTimeInMillis();
-        calendar.add(Calendar.MONTH, -maxMonth + minMonth);
+        calendar.add(Calendar.SECOND, -maxMonth + minMonth);
         maxTs = calendar.getTimeInMillis();
 
         for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {

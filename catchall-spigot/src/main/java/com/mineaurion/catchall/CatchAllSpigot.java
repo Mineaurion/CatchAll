@@ -1,7 +1,9 @@
 package com.mineaurion.catchall;
 
 import com.mineaurion.catchall.commands.*;
+import com.mineaurion.catchall.events.OnPlayerJoinEvent;
 import com.mineaurion.catchall.events.OnPlayerLoginEvent;
+import com.mineaurion.catchall.events.OnPlayerQuitEvent;
 import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -49,6 +51,8 @@ public final class CatchAllSpigot extends JavaPlugin {
 
     private void initEvents() {
         getServer().getPluginManager().registerEvents(new OnPlayerLoginEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerJoinEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerQuitEvent(), this);
     }
 
     private void initCommands() {
@@ -58,6 +62,7 @@ public final class CatchAllSpigot extends JavaPlugin {
         registerCommand("webhook", new WebhookCommand());
         registerCommand("maintenance", new MaintenanceCommand());
         registerCommand("donateur", new DonateurCommand());
+        registerCommand("mchat", new MChatCommand());
         sendMessage("Total : " + this.commandCount + " command(s) loaded (" + this.commandIgnoredCount + " ignored)");
     }
 
@@ -73,8 +78,8 @@ public final class CatchAllSpigot extends JavaPlugin {
         }
     }
 
-    public void sendMessage(String msg, String sender) {
-        Bukkit.getPlayer(sender).sendMessage(msg);
+    public void sendMessage(String msg, String player) {
+        Bukkit.getPlayer(player).sendMessage(msg);
     }
 
     public void sendMessage(String msg) {

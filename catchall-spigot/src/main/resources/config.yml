@@ -9,6 +9,8 @@ commands:
   webhook: true
   maintenance: true
   donateur: true
+  mchat: true
+  test: false
 # Commands Configuration
 webhook:
   discord:
@@ -16,3 +18,5 @@ webhook:
     bot2: "https://discordapp.com/api/webhooks/575305130136567820/FPHSXFRH-kHEv6p2fls4pk4SH-s03jV4eh0n30HvC-xKLgmVo25SOGVxWOYPHXYCMl90"
     bot3: "https://discordapp.com/api/webhooks/575305265273110528/kHWHyAN0ynrIt8iCOdzp6eTziR0U-Ipt--w1UWLb0QpFLLdnOPVUHEy_X0J9LMeUvXcL"
   avatar: "https://gitlab.com/uploads/-/system/user/avatar/567221/avatar.png?width=30"
+mchat:
+  href_color: GOLD

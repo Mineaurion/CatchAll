@@ -26,5 +26,9 @@ commands:
     description: "Enable/Disable the donator server status"
     permission: catchall.donator
     usage: "Usage : /<command>"
+  mchat:
+    description: "Send custom message"
+    permission: catchall.mchat
+    usage: "Usage : /<command> [to] [message]"
 
 permissions: {}
