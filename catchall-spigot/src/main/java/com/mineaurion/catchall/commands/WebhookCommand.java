@@ -30,13 +30,11 @@ public class WebhookCommand implements CommandExecutor {
             sender.sendMessage("This channel doesn't exist!");
             return false;
         }
-
         String[] message = Arrays.copyOfRange(args, 1, args.length);
-        String author = this.main.getServer().getServerName() + " - " + sender.getName();
         TemmieWebhook webhook = new TemmieWebhook(channel);
-        DiscordMessage dm = DiscordMessage.builder().username(author)
+        // Set Avatar and Sender name inside the webhook service
+        DiscordMessage dm = DiscordMessage.builder()
                 .content(String.join(" ", message))
-                .avatarUrl(this.main.getConfig().getString("webhook.avatar"))
                 .build();
         try {
             webhook.sendMessage(dm);
@@ -47,4 +45,5 @@ public class WebhookCommand implements CommandExecutor {
         sender.sendMessage("Message succesfully sent to channel [" + args[0] + "]");
         return true;
     }
+
 }

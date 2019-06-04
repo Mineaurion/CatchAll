@@ -74,6 +74,7 @@ public class MChatCommand implements CommandExecutor {
 
         this.main.sendMessage("Message sent by " + name + " to " + ((uniquePlayer) ? receiver.getName() : "all players connected"));
         this.main.sendMessage("Content : " + raw);
+
         return true;
     }
 
