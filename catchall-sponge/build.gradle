@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     compile project(':catchall-common')
-    compile 'org.spongepowered:spongeapi:7.0.0'
+    compile 'org.spongepowered:spongeapi:7.1.0'
 }
 
 sponge.plugin.id = pluginId
@@ -14,3 +14,11 @@ shadowJar {
         include(dependency(':catchall-common'))
     }
 }
+
+task installJar(type: Copy) {
+    from "./build/libs/catchall-sponge-" + version + "-all.jar"
+    into '../../../Server/Sponge7.1.5/mods'
+}
+
+installJar.dependsOn shadowJar;
+installJar.mustRunAfter(shadowJar);

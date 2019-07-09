@@ -48,7 +48,7 @@ shadowJar {
 
 task installJar(type: Copy) {
     from "./build/libs/catchall-spigot-" + version + "-all.jar"
-    into '../../../Server/Spigot/plugins'
+    into '../../../Server/Spigot1.17.10/plugins'
 }
 
 installJar.dependsOn shadowJar;
