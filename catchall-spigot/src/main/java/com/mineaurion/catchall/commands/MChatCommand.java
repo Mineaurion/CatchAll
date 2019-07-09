@@ -57,11 +57,11 @@ public class MChatCommand implements CommandExecutor {
 
         String[] splitRaw = splitWithDelimiters(raw, "(<.*?>)");
         TextComponent message = new TextComponent("");
-
         for (String sub : splitRaw) {
             TextComponent extra = new TextComponent("");
             if (sub.matches(("<.*?>"))) {
                 message.addExtra(extraHref(sub));
+
             } else
                 extra.setText(sub);
             message.addExtra(extra);
@@ -80,6 +80,8 @@ public class MChatCommand implements CommandExecutor {
 
     private TextComponent extraHref(String sub) {
         TextComponent extra = new TextComponent("");
+        extra.setUnderlined(true);
+        extra.setItalic(true);
         String[] split = sub.split("\\|");
         if (split.length != 3) {
             extra.setText(sub);

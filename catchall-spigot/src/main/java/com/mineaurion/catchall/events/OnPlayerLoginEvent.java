@@ -18,6 +18,13 @@ public class OnPlayerLoginEvent implements Listener {
     public void Handle(PlayerLoginEvent event){
         Player player = event.getPlayer();
 
+        int citizenMax = Bukkit.getServer().getMaxPlayers();
+        int onlineCount = Bukkit.getOnlinePlayers().size();
+
+        if (onlineCount >= citizenMax - 5)
+            if (!player.hasPermission("mineaurion.donateur"))
+                event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "Last slots are reserved to donators (and more) players");
+
         boolean maintenance_state = this.main.getConfig().getBoolean("states.maintenance");
         boolean donateur_state = this.main.getConfig().getBoolean("states.donateur");
 
