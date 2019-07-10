@@ -16,6 +16,7 @@ import org.spongepowered.api.text.Text;
         id = "catchall",
         name = "CatchAll"
 )
+
 public class CatchAllSponge {
     public static CatchAllSponge _instance = null;
     @Inject
@@ -25,11 +26,15 @@ public class CatchAllSponge {
     @Listener
     public void preInit(GamePreInitializationEvent event) {
         //TODO: load config
+        // INIT CONFIG
+        logger.info("Config initialization");
     }
 
     @Listener
     public void init(GameInitializationEvent event) {
-        //TODO: init cmd and events
+        logger.info("Hello Boy");
+        // register events
+        // register commands
     }
 
     private void initConfig() {
@@ -37,6 +42,18 @@ public class CatchAllSponge {
     }
 
     private void initCommands() {
+
+    }
+
+    private void initEvents() {
+
+    }
+
+    private void registerCommand() {
+
+    }
+
+    private void registerEvent() {
 
     }
 
