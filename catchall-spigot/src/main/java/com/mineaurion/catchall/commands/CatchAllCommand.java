@@ -37,6 +37,7 @@ public class CatchAllCommand implements CommandExecutor {
 
         switch (args[0]) {
             case "reload":
+                main.reloadConfig();
                 this.main.init();
                 sender.sendMessage("Plugin reloaded");
                 break;

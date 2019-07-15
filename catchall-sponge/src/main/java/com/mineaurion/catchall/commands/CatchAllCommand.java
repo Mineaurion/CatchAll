@@ -7,6 +7,8 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.spec.CommandExecutor;
 
 public class CatchAllCommand implements CommandExecutor {
+
+
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 

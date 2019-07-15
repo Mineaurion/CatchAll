@@ -5,34 +5,49 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
+import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.plugin.PluginContainer;
 import org.spongepowered.api.text.Text;
 
-@Plugin(
-        id = "catchall",
-        name = "CatchAll"
-)
+import java.nio.file.Path;
 
+@Plugin(id = "catchall", name = "CatchAll")
 public class CatchAllSponge {
-    public static CatchAllSponge _instance = null;
+    private static CatchAllSponge _instance = null;
     @Inject
-    private Logger logger;
+    public Logger logger;
+
+    @Inject
     private Game game;
+
+    @Inject
+    public PluginContainer pluginContainer;
+
+    @Inject
+    @ConfigDir(sharedRoot = true)
+    public Path configDir;
+
+    public SettingManager settings;
+
+    public CatchAllSponge() {
+        _instance = this;
+    }
 
     @Listener
     public void preInit(GamePreInitializationEvent event) {
-        //TODO: load config
-        // INIT CONFIG
-        logger.info("Config initialization");
+
     }
 
     @Listener
     public void init(GameInitializationEvent event) {
-        logger.info("Hello Boy");
+        settings = new SettingManager();
+        logger.info("HELLO " + SettingManager.states.get("maintenance").getString());
+
         // register events
         // register commands
     }
