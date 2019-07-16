@@ -1,8 +1,10 @@
 package com.mineaurion.catchall;
 
+import com.google.inject.Inject;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
+import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
 
 import java.io.IOException;
@@ -15,6 +17,9 @@ import java.util.Map;
 public class SettingManager {
     private CatchAllSponge plugin;
 
+    @Inject
+    public Logger logger;
+
     public SettingManager() {
         plugin = CatchAllSponge.getInstance();
         try {
@@ -25,10 +30,10 @@ public class SettingManager {
     }
 
     public void init() throws IOException {
-        Path path = Paths.get(plugin.configDir + "/settings.conf");
+        Path path = Paths.get(plugin.configDir + "/catchall.conf");
         if(!Files.exists(path)) {
-            plugin.logger.info("Create configuration file");
-            Sponge.getAssetManager().getAsset(plugin, "settings.conf").get().copyToFile(path);
+            logger.info("Create configuration file");
+            Sponge.getAssetManager().getAsset(plugin, "catchall.conf").get().copyToFile(path);
         }
 
         ConfigurationLoader<CommentedConfigurationNode> loader = HoconConfigurationLoader.builder().setPath(path).build();

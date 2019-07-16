@@ -1,18 +1,20 @@
 package com.mineaurion.catchall;
 
 import com.google.inject.Inject;
-import jdk.nashorn.internal.objects.annotations.Getter;
+import com.mineaurion.catchall.events.AuthEvent;
+import com.mineaurion.catchall.events.DisconnectEvent;
+import com.mineaurion.catchall.events.JoinEvent;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
-import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.event.Listener;
+import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
-import org.spongepowered.api.text.Text;
+
 
 import java.nio.file.Path;
 
@@ -20,7 +22,7 @@ import java.nio.file.Path;
 public class CatchAllSponge {
     private static CatchAllSponge _instance = null;
     @Inject
-    public Logger logger;
+    private Logger logger;
 
     @Inject
     private Game game;
@@ -40,36 +42,19 @@ public class CatchAllSponge {
 
     @Listener
     public void preInit(GamePreInitializationEvent event) {
-
+        // Settings
+        settings = new SettingManager();
     }
 
     @Listener
     public void init(GameInitializationEvent event) {
-        settings = new SettingManager();
-        logger.info("HELLO " + SettingManager.states.get("maintenance").getString());
-
-        // register events
-        // register commands
+        registerEvents();
     }
 
-    private void initConfig() {
-
-    }
-
-    private void initCommands() {
-
-    }
-
-    private void initEvents() {
-
-    }
-
-    private void registerCommand() {
-
-    }
-
-    private void registerEvent() {
-
+    private void registerEvents() {
+        Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Auth.class, new AuthEvent());
+        Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Join.class, new JoinEvent());
+        Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Disconnect.class, new DisconnectEvent());
     }
 
     public static CatchAllSponge getInstance() {

@@ -4,10 +4,8 @@ import com.mineaurion.catchall.commands.*;
 import com.mineaurion.catchall.events.OnPlayerJoinEvent;
 import com.mineaurion.catchall.events.OnPlayerLoginEvent;
 import com.mineaurion.catchall.events.OnPlayerQuitEvent;
-import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CatchAllSpigot extends JavaPlugin {

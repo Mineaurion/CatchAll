@@ -1,6 +1,5 @@
 package com.mineaurion.catchall.commands;
 
-import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.CatchAllSpigot;
 import com.mrpowergamerbr.temmiewebhook.DiscordMessage;
 import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
@@ -28,7 +27,7 @@ public class WebhookCommand implements CommandExecutor {
         String channel = this.main.getConfig().getString("webhook.discord." + args[0]);
         if (channel == null) {
             sender.sendMessage("This channel doesn't exist!");
-            return false;
+            return true;
         }
         String[] message = Arrays.copyOfRange(args, 1, args.length);
         TemmieWebhook webhook = new TemmieWebhook(channel);
@@ -40,7 +39,7 @@ public class WebhookCommand implements CommandExecutor {
             webhook.sendMessage(dm);
         } catch (WebhookException e) {
             sender.sendMessage("Internal webhook error, contact an administrator");
-            return false;
+            return true;
         }
         sender.sendMessage("Message succesfully sent to channel [" + args[0] + "]");
         return true;

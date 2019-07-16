@@ -80,7 +80,7 @@ public class MChatCommand implements CommandExecutor {
 
     private TextComponent extraHref(String sub) {
         TextComponent extra = new TextComponent("");
-        extra.setUnderlined(true);
+        //extra.setUnderlined(true);
         extra.setItalic(true);
         String[] split = sub.split("\\|");
         if (split.length != 3) {
