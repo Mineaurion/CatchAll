@@ -2,16 +2,6 @@
 states:
   maintenance: false
   donateur: false
-commands:
-  catchall: true
-  catchall reload: true
-  lastlogin: true
-  webhook: true
-  maintenance: true
-  donateur: true
-  mchat: true
-  hand: true
-# Commands Configuration
 webhook:
   discord:
     bot1: "https://discordapp.com/api/webhooks/575304921134530588/fyb4yJAPllCSppaTLkJL5bpoHRHluGfp6prjOuEcO4JQzFJAW34X3cX_fYQJgNFTQ-zk"

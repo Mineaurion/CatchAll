@@ -14,6 +14,8 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.TextRepresentable;
 
 
 import java.nio.file.Path;
@@ -34,7 +36,7 @@ public class CatchAllSponge {
     @ConfigDir(sharedRoot = true)
     public Path configDir;
 
-    public SettingManager settings;
+    public SettingManager conf;
 
     public CatchAllSponge() {
         _instance = this;
@@ -43,18 +45,35 @@ public class CatchAllSponge {
     @Listener
     public void preInit(GamePreInitializationEvent event) {
         // Settings
-        settings = new SettingManager();
+        conf = new SettingManager();
     }
 
     @Listener
     public void init(GameInitializationEvent event) {
         registerEvents();
+        CommandManager cm = new CommandManager();
     }
 
     private void registerEvents() {
         Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Auth.class, new AuthEvent());
         Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Join.class, new JoinEvent());
         Sponge.getEventManager().registerListener(this, ClientConnectionEvent.Disconnect.class, new DisconnectEvent());
+    }
+
+    public void sendMessage(Text text) {
+        Sponge.getServer().getConsole().sendMessage(text);
+    }
+
+    public SettingManager getConf() {
+        return conf;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void reload() {
+        conf = new SettingManager();
     }
 
     public static CatchAllSponge getInstance() {

@@ -11,8 +11,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class CatchAllSpigot extends JavaPlugin {
 
     private static CatchAllSpigot _instance = null;
-    private int commandCount = 0;
-    private int commandIgnoredCount = 0;
 
     public CatchAllSpigot() {
         super();
@@ -61,19 +59,11 @@ public final class CatchAllSpigot extends JavaPlugin {
         registerCommand("maintenance", new MaintenanceCommand());
         registerCommand("donateur", new DonateurCommand());
         registerCommand("mchat", new MChatCommand());
-        sendMessage("Total : " + this.commandCount + " command(s) loaded (" + this.commandIgnoredCount + " ignored)");
     }
 
     private void registerCommand(String name, CommandExecutor cmd) {
-        if (getConfig().getBoolean(("commands." + name))) {
-            getCommand(name).setExecutor(cmd);
-            sendMessage("Command : " + name + " loaded");
-            this.commandCount++;
-        } else {
-            getCommand(name).setUsage("/" + name + " currently disabled");
-            sendMessage("Command : " + name + " ignored");
-            this.commandIgnoredCount++;
-        }
+        getCommand(name).setExecutor(cmd);
+        sendMessage("Command : " + name + " loaded");
     }
 
     public void sendMessage(String msg, String player) {

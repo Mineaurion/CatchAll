@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.events;
 
+import com.mineaurion.catchall.CatchAllSponge;
 import com.mineaurion.catchall.SettingManager;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.entity.living.player.Player;
@@ -14,9 +15,9 @@ import java.util.Optional;
 public class AuthEvent implements EventListener<ClientConnectionEvent.Auth> {
     @Override
     public void handle(ClientConnectionEvent.Auth event) throws Exception {
+        CatchAllSponge plugin = CatchAllSponge.getInstance();
         Optional<UserStorageService> uss = Sponge.getServiceManager().provide(UserStorageService.class);
         Optional<User> user = uss.get().get(event.getProfile().getUniqueId());
-
         int citizenMax = Sponge.getServer().getMaxPlayers();
         int onlineCount = Sponge.getServer().getOnlinePlayers().size();
 
@@ -28,8 +29,8 @@ public class AuthEvent implements EventListener<ClientConnectionEvent.Auth> {
             }
         }
 
-        boolean maintenance_state = SettingManager.states.get("maitenance").getBoolean();
-        boolean donateur_state = SettingManager.states.get("donateur").getBoolean();
+        boolean maintenance_state = plugin.getConf().get("states", "maintenance").getBoolean();
+        boolean donateur_state = plugin.getConf().get("states", "donateur").getBoolean();
 
         if (maintenance_state) {
             if (!user.get().hasPermission("Maintenance.bypass")) {
