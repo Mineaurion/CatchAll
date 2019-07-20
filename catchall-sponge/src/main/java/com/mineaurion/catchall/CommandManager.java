@@ -71,9 +71,21 @@ public class CommandManager {
                 )
                 .build();
 
+        // LastLogin
+        CommandSpec lastlogin = CommandSpec.builder()
+                .description(Text.of(""))
+                .permission("catchall.cmd.lastlogin")
+                .executor(new LastLoginCommand())
+                .arguments(
+                        GenericArguments.optional(GenericArguments.integer(Text.of("minMonth"))),
+                        GenericArguments.optional(GenericArguments.integer(Text.of("maxMonth")))
+                )
+                .build();
+
         register(catchall, "catchall");
         register(donateur, "donateur");
         register(maintenance, "maintenance");
         register(webhook, "webhook");
+        register(lastlogin, "lastlogin");
     }
 }

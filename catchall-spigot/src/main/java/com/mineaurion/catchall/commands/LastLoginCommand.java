@@ -43,7 +43,7 @@ public class LastLoginCommand implements CommandExecutor {
             return false;
 
         String filename = "lastlogin";
-        int minMonth = 1;
+        int minMonth = 0;
         int maxMonth = 6;
         long minTs;
         long maxTs;
@@ -65,9 +65,9 @@ public class LastLoginCommand implements CommandExecutor {
 
         List<String> players = new ArrayList<String>();
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.SECOND, -minMonth);
+        calendar.add(Calendar.MONTH, -minMonth);
         minTs = calendar.getTimeInMillis();
-        calendar.add(Calendar.SECOND, -maxMonth + minMonth);
+        calendar.add(Calendar.MONTH, -maxMonth + minMonth);
         maxTs = calendar.getTimeInMillis();
 
         for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {
