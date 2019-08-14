@@ -37,8 +37,5 @@ sponge_build:
   only:
     - master
     - v2
-
-
-
 after_script:
   - echo "End CI"

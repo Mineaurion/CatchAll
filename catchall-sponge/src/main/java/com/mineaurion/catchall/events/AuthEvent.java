@@ -18,8 +18,13 @@ public class AuthEvent implements EventListener<ClientConnectionEvent.Auth> {
         CatchAllSponge plugin = CatchAllSponge.getInstance();
         Optional<UserStorageService> uss = Sponge.getServiceManager().provide(UserStorageService.class);
         Optional<User> user = uss.get().get(event.getProfile().getUniqueId());
+
+        if (!user.isPresent())
+            return;
+
         int citizenMax = Sponge.getServer().getMaxPlayers();
         int onlineCount = Sponge.getServer().getOnlinePlayers().size();
+
 
         if (onlineCount >= citizenMax - 5) {
             if (!user.get().hasPermission("mineaurion.donateur")) {
