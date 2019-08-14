@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.lang.*;
 
-
 public class LastLoginCommand implements CommandExecutor {
     private CatchAllSpigot main;
 
@@ -44,7 +43,7 @@ public class LastLoginCommand implements CommandExecutor {
 
         String filename = "lastlogin";
         int minMonth = 0;
-        int maxMonth = 6;
+        int maxMonth = 2;
         long minTs;
         long maxTs;
 

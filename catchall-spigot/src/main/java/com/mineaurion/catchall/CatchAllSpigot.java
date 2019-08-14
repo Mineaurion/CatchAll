@@ -1,6 +1,7 @@
 package com.mineaurion.catchall;
 
 import com.mineaurion.catchall.commands.*;
+import com.mineaurion.catchall.events.OnPlayerCommandPreprocess;
 import com.mineaurion.catchall.events.OnPlayerJoinEvent;
 import com.mineaurion.catchall.events.OnPlayerLoginEvent;
 import com.mineaurion.catchall.events.OnPlayerQuitEvent;
@@ -49,6 +50,7 @@ public final class CatchAllSpigot extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnPlayerLoginEvent(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerQuitEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerCommandPreprocess(), this);
     }
 
     private void initCommands() {

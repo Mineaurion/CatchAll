@@ -73,7 +73,7 @@ public class CommandManager {
 
         // LastLogin
         CommandSpec lastlogin = CommandSpec.builder()
-                .description(Text.of(""))
+                .description(Text.of("Write a file with players offline between MIN and MAX months ago (default: 0 and 2 months)"))
                 .permission("catchall.cmd.lastlogin")
                 .executor(new LastLoginCommand())
                 .arguments(
@@ -82,10 +82,19 @@ public class CommandManager {
                 )
                 .build();
 
+        // Hand
+        CommandSpec hand = CommandSpec.builder()
+                .description(Text.of(""))
+                .permission("catchall.cmd.hand")
+                .executor(new HandCommand())
+                .build();
+
         register(catchall, "catchall");
         register(donateur, "donateur");
         register(maintenance, "maintenance");
         register(webhook, "webhook");
         register(lastlogin, "lastlogin");
+        register(hand, "hand");
+
     }
 }
