@@ -24,8 +24,8 @@ public class HandCommand implements CommandExecutor {
         }
 
         CatchAllSponge plugin = CatchAllSponge.getInstance();
-        String rawText_FR = "%player_name% vous montre %player_item_in_main_hand%";
-        String rawText_EN = "%player_name% show to you %player_item_in_main_hand%";
+        String rawText_FR = "&6* %player_name% &5vous montre&c %player_item_in_main_hand%";
+        String rawText_EN = "&6* %player_name% &5show to you&c %player_item_in_main_hand%";
 
         Text text_FR = TextSerializers.FORMATTING_CODE.deserialize(rawText_FR);
         Text text_EN = TextSerializers.FORMATTING_CODE.deserialize(rawText_EN);

@@ -89,12 +89,24 @@ public class CommandManager {
                 .executor(new HandCommand())
                 .build();
 
+        // MChat
+        CommandSpec mchat = CommandSpec.builder()
+                .description(Text.of(""))
+                .permission("catchall.cmd.mchat")
+                .executor(new MChatCommand())
+                .arguments(
+                        GenericArguments.string(Text.of("target")),
+                        GenericArguments.remainingJoinedStrings(Text.of("content"))
+                )
+                .build();
+
         register(catchall, "catchall");
         register(donateur, "donateur");
         register(maintenance, "maintenance");
         register(webhook, "webhook");
         register(lastlogin, "lastlogin");
         register(hand, "hand");
+        register(mchat, "mchat");
 
     }
 }
