@@ -29,10 +29,10 @@ spigot_build:
 sponge_build:
   stage: build
   script:
-    - ./gradlew :aurioneconomy-sponge:shadowJar
+    - ./gradlew :catchall-sponge:shadowJar
   artifacts:
     paths:
-      - aurioneconomy-sponge/build/libs/*.jar
+      - catchall-sponge/build/libs/*.jar
     expire_in: 1 week
   only:
     - master
