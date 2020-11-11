@@ -30,5 +30,9 @@ commands:
     description: "Send custom message"
     permission: catchall.cmd.mchat
     usage: "Usage : /<command> [to] [message]"
+  glist:
+    description: "glist"
+    permission: catchall.cmd.glist
+    usage: "Usage : /<command>"
 
 permissions: {}

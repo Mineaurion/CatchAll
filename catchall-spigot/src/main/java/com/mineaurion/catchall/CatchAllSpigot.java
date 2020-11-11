@@ -61,6 +61,7 @@ public final class CatchAllSpigot extends JavaPlugin {
         registerCommand("maintenance", new MaintenanceCommand());
         registerCommand("donateur", new DonateurCommand());
         registerCommand("mchat", new MChatCommand());
+        registerCommand("glist", new GListCommand());
     }
 
     private void registerCommand(String name, CommandExecutor cmd) {
