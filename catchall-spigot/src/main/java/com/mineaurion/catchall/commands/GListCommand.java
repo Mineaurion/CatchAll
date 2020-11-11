@@ -1,18 +1,13 @@
 package com.mineaurion.catchall.commands;
 
+import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.CatchAllSpigot;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class GListCommand implements CommandExecutor {
-    private CatchAllSpigot main;
+    private final CatchAllSpigot main;
 
     public GListCommand() {
         this.main = CatchAllSpigot.getInstance();
@@ -20,29 +15,17 @@ public class GListCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        try {
-            URL url = new URL("http://api.mineaurion.com/v1/serveurs");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+        HttpRequest request = HttpRequest.get("http://api.mineaurion.com/v1/serveurs");
 
-            String response = con.getResponseMessage();
+        int responseCode = request.code();
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer content = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-            in.close();
-            con.disconnect();
-
-            sender.sendMessage(content.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (responseCode == 200) {
+            String responseBody = request.body();
+            sender.sendMessage(responseBody);
+        } else {
+            sender.sendMessage("Mineaurion api call failed");
         }
 
-
-        return false;
+        return true;
     }
 }
