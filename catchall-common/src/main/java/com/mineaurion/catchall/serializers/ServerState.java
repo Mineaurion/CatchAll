@@ -2,6 +2,7 @@ package com.mineaurion.catchall.serializers;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerState {
@@ -11,14 +12,17 @@ public class ServerState {
     @SerializedName("info")
     private String serverName;
 
+    @SerializedName("players")
+    private int count;
+
     @SerializedName("statut")
-    private int status;
+    private String status;
 
     @SerializedName("maxplayers")
     private int maxSlots;
 
     @SerializedName("joueurs")
-    public List<String> playersName;
+    public Object onlinePlayersName;
 
     public ServerState() {
 
@@ -42,11 +46,24 @@ public class ServerState {
         return this;
     }
 
-    public int getStatus() {
+    public int getCount() {
+        return count;
+    }
+
+    public ServerState setCount(int count) {
+        this.count = count;
+        return this;
+    }
+
+    public Boolean isOn() {
+        return this.status.equals("On");
+    }
+
+    public String getStatus() {
         return status;
     }
 
-    public ServerState setStatus(int status) {
+    public ServerState setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -60,12 +77,17 @@ public class ServerState {
         return this;
     }
 
-    public List<String> getPlayersName() {
-        return playersName;
+    @SuppressWarnings("unchecked")
+    public ArrayList<String> getOnlinePlayersName() {
+        if (!(this.onlinePlayersName instanceof ArrayList<?>)) {
+            return new ArrayList<String>();
+        }
+
+        return (ArrayList<String>) this.onlinePlayersName;
     }
 
-    public ServerState setPlayersName(List<String> playersName) {
-        this.playersName = playersName;
+    public ServerState setOnlinePlayersName(Object onlinePlayersName) {
+        this.onlinePlayersName = onlinePlayersName;
         return this;
     }
 }
