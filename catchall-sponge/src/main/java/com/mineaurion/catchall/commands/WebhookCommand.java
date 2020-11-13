@@ -1,6 +1,8 @@
 package com.mineaurion.catchall.commands;
 
+import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.CatchAllSponge;
+import com.mineaurion.catchall.parsers.DiscordMessageParser;
 import com.mrpowergamerbr.temmiewebhook.DiscordMessage;
 import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
 import com.mrpowergamerbr.temmiewebhook.exceptions.WebhookException;
@@ -24,29 +26,23 @@ public class WebhookCommand implements CommandExecutor {
 
         if (channel.isEmpty() || !channels.containsKey(channel)) {
             src.sendMessage(Text.of("This channel doesn't exist!"));
-            plugin.getLogger().info("This channel doesn't exist!");
             return CommandResult.empty();
         }
 
         String message = args.<String>getOne("message").get();
         if (message.isEmpty()) {
-            src.sendMessage(Text.of("Invalide message ?!"));
-            plugin.getLogger().info("Invalide message ?!");
+            src.sendMessage(Text.of("Invalid discord webhook format"));
             return CommandResult.empty();
         }
 
-        TemmieWebhook webhook = new TemmieWebhook(channels.get(channel).getString());
-        DiscordMessage dm = DiscordMessage.builder()
-                .content(message)
-                .build();
-        try {
-            webhook.sendMessage(dm);
-        } catch (WebhookException e) {
-            src.sendMessage(Text.of("Internal webhook error, contact an administrator"));
-            plugin.getLogger().info("Internal webhook error, contact an administrator");
-            return CommandResult.empty();
-        }
-        plugin.getLogger().info("Message succesfully sent to channel [" + channel + "]");
+        DiscordMessageParser parser = new DiscordMessageParser(message);
+
+        HttpRequest.post(channel)
+                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
+                .contentType("application/json")
+                .send(parser.getMessage())
+                .body();
+
         src.sendMessage(Text.of("Message succesfully sent to channel [" + channel + "]"));
         return CommandResult.success();
     }

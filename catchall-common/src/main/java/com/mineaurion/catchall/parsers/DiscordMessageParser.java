@@ -9,6 +9,10 @@ public class DiscordMessageParser {
         this.message = message;
     }
 
+    public DiscordMessageParser(String message) {
+        this.message = message.split("\\s+");
+    }
+
     public boolean isValid() {
         return (this.message.length >= 1)  && !isEmbed() || (isEmbed() && this.message.length > 2);
     }
@@ -27,7 +31,7 @@ public class DiscordMessageParser {
             return String.join(" ", message);
         }
 
-        return String.join(" ", this.message);
+        return "{\"content\": \"" + String.join(" ", this.message) + "\"}";
     }
 
 }

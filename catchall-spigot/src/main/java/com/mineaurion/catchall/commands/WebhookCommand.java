@@ -47,25 +47,11 @@ public class WebhookCommand implements CommandExecutor {
             return true;
         }
 
-        if (parser.isEmbed()) {
-            HttpRequest.post(channel)
-                    .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
-                    .contentType("application/json")
-                    .send(parser.getMessage())
-                    .body();
-        } else {
-            TemmieWebhook webhook = new TemmieWebhook(channel);
-            // Set Avatar and Sender name inside the webhook service
-            DiscordMessage dm = DiscordMessage.builder()
-                    .content(parser.getMessage())
-                    .build();
-            try {
-                webhook.sendMessage(dm);
-            } catch (WebhookException e) {
-                sender.sendMessage("Internal webhook error, contact an administrator");
-                return true;
-            }
-        }
+        HttpRequest.post(channel)
+                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
+                .contentType("application/json")
+                .send(parser.getMessage())
+                .body();
 
         sender.sendMessage("Message succesfully sent to channel [" + args[0] + "]");
         return true;

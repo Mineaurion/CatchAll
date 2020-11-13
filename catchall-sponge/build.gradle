@@ -42,7 +42,7 @@ shadowJar {
 
 task installJar(type: Copy) {
     from "./build/libs/catchall-sponge-" + version + "-all.jar"
-    into '../../../Server/Sponge7.1.5/mods'
+    into '../../../servers/forge-1.12.2-14.23.5.2838/mods'
 }
 
 installJar.dependsOn shadowJar;
