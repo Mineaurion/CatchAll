@@ -1,22 +1,15 @@
 package com.mineaurion.catchall.commands;
 
-import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.CatchAllSpigot;
-import com.mrpowergamerbr.temmiewebhook.DiscordMessage;
-import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
-import com.mrpowergamerbr.temmiewebhook.exceptions.WebhookException;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.lang.*;
-import java.util.Arrays;
-
 
 public class DonateurCommand implements CommandExecutor {
-    private CatchAllSpigot main;
+    private final CatchAllSpigot main;
 
     public DonateurCommand() {
         this.main = CatchAllSpigot.getInstance();

@@ -25,7 +25,6 @@ dependencies {
     compile project(':catchall-common')
     compile 'org.spongepowered:spongeapi:7.1.0'
     compile 'com.github.kevinsawicki:http-request:-SNAPSHOT'
-    compile 'com.github.mrpowergamerbr:temmiewebhook:-SNAPSHOT'
     compile 'com.github.rojo8399:PlaceholderAPI:master-SNAPSHOT'
 }
 
@@ -35,7 +34,6 @@ shadowJar {
     dependencies {
         include(dependency(':catchall-common'))
         include(dependency('com.google.code.gson:gson'))
-        include(dependency('com.github.kevinsawicki:http-request'))
         include(dependency('com.github.mrpowergamerbr:temmiewebhook:-SNAPSHOT'))
     }
 }

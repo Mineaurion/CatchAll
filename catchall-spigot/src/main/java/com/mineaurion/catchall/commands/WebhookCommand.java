@@ -3,21 +3,10 @@ package com.mineaurion.catchall.commands;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.CatchAllSpigot;
 import com.mineaurion.catchall.parsers.DiscordMessageParser;
-import com.mrpowergamerbr.temmiewebhook.DiscordEmbed;
-import com.mrpowergamerbr.temmiewebhook.DiscordMessage;
-import com.mrpowergamerbr.temmiewebhook.TemmieWebhook;
-import com.mrpowergamerbr.temmiewebhook.exceptions.WebhookException;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import javax.net.ssl.HttpsURLConnection;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.*;
-import java.lang.reflect.Array;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 

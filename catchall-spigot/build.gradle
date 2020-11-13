@@ -28,7 +28,6 @@ dependencies {
     compile 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
     compile 'me.clip:placeholderapi:2.0.8'
     compile 'com.github.kevinsawicki:http-request:-SNAPSHOT'
-    compile 'com.github.mrpowergamerbr:temmiewebhook:-SNAPSHOT'
 }
 
 processResources {
