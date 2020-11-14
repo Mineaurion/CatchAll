@@ -10,6 +10,6 @@ public class CatchAllCommand implements CommandExecutor {
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 
-        return null;
+        return CommandResult.empty();
     }
 }

@@ -11,20 +11,12 @@ repositories {
         name = 'jitpack'
         url = 'https://jitpack.io'
     }
-    maven {
-        name = 'lombok'
-        url = 'org.projectlombok'
-    }
-    maven {
-        name = 'gson'
-        url = 'com.google.code.gson'
-    }
 }
 
 dependencies {
     compile project(':catchall-common')
     compile 'org.spongepowered:spongeapi:7.1.0'
-    compile 'com.github.kevinsawicki:http-request:-SNAPSHOT'
+    implementation 'com.github.kevinsawicki:http-request:6.0'
     compile 'com.github.rojo8399:PlaceholderAPI:master-SNAPSHOT'
 }
 
@@ -34,13 +26,13 @@ shadowJar {
     dependencies {
         include(dependency(':catchall-common'))
         include(dependency('com.google.code.gson:gson'))
-        include(dependency('com.github.mrpowergamerbr:temmiewebhook:-SNAPSHOT'))
+        include(dependency('com.github.kevinsawicki:http-request'))
     }
 }
 
 task installJar(type: Copy) {
     from "./build/libs/catchall-sponge-" + version + "-all.jar"
-    into '../../../servers/forge-1.12.2-14.23.5.2838/mods'
+    into '../../../servers/sponge-1.12.2-7.3.0/mods'
 }
 
 installJar.dependsOn shadowJar;

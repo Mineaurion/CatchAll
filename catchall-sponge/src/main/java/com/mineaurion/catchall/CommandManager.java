@@ -67,7 +67,7 @@ public class CommandManager {
                 .executor(new WebhookCommand())
                 .arguments(
                     GenericArguments.string(Text.of("channel")),
-                    GenericArguments.remainingJoinedStrings(Text.of("message"))
+                    GenericArguments.remainingRawJoinedStrings(Text.of("message"))
                 )
                 .build();
 

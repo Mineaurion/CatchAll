@@ -27,7 +27,7 @@ dependencies {
     compile project(':catchall-common')
     compile 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
     compile 'me.clip:placeholderapi:2.0.8'
-    compile 'com.github.kevinsawicki:http-request:-SNAPSHOT'
+    compile 'com.github.kevinsawicki:http-request:6.0'
 }
 
 processResources {
@@ -40,8 +40,7 @@ shadowJar {
     dependencies {
         include(dependency(':catchall-common'))
         include(dependency('com.google.code.gson:gson'))
-        include(dependency('com.github.kevinsawicki:http-request'))
-        include(dependency('com.github.mrpowergamerbr:temmiewebhook:-SNAPSHOT'))
+        include(dependency('com.github.kevinsawicki:http-request:6.0'))
     }
 }
 
