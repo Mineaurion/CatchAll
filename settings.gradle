@@ -1,0 +1,3 @@
+rootProject.name = 'catchall'
+
+include 'catchall-common', 'catchall-spigot', 'catchall-sponge'
