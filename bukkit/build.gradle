@@ -1,0 +1,30 @@
+repositories {
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        name = 'lombok'
+        url = 'org.projectlombok'
+    }
+    maven {
+        name = 'gson'
+        url = 'com.google.code.gson'
+    }
+    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url 'https://repo.extendedclip.com/content/repositories/public/' }
+}
+
+dependencies {
+    implementation project(':common')
+    compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly 'me.clip:placeholderapi:2.0.8'
+
+}
+
+processResources {
+    duplicatesStrategy = 'include'
+    from(sourceSets.main.resources.srcDirs) {
+        expand 'version': version
+    }
+}

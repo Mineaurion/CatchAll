@@ -1,0 +1,4 @@
+dependencies {
+    api 'com.google.code.gson:gson:2.8.9' // 2.9 version make sponge crash at startup
+    api 'com.mineaurion.api:library:0.7.2'
+}

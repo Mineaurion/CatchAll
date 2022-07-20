@@ -1,0 +1,52 @@
+import org.spongepowered.gradle.plugin.config.PluginLoaders
+import org.spongepowered.plugin.metadata.model.PluginDependency
+
+plugins {
+    id 'org.spongepowered.gradle.plugin' version '2.0.2'
+    id 'net.kyori.blossom' version '1.2.0'
+}
+
+repositories {
+    maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+    maven { url = 'https://jitpack.io' }
+}
+
+blossom {
+    replaceToken("@pluginVersion@", project.ext['pluginVersion'])
+}
+
+sponge {
+    apiVersion("7.4.0")
+    loader {
+        name(PluginLoaders.JAVA_PLAIN)
+        version(pluginVersion)
+    }
+
+    license("GNU General Public License v3.0")
+
+    plugin(pluginId) {
+        displayName("CatchAll")
+        entrypoint("com.mineaurion.catchall.sponge.CatchAll")
+        description("Mineaurion Utils")
+        links {
+            homepage("https://mineaurion.com/")
+            source("https://github.com/Mineaurion/CatchAll")
+            issues("https://github.com/Mineaurion/CatchAll/issues")
+        }
+        contributor("Yann151924") {
+            description("Lead Developer")
+        }
+        dependency("spongeapi") {
+            loadOrder(PluginDependency.LoadOrder.AFTER)
+            optional(false)
+            version("7.4.0")
+        }
+    }
+}
+
+dependencies {
+    implementation project(':common')
+    implementation 'com.github.kevinsawicki:http-request:6.0'
+    compileOnly 'org.spongepowered:spongeapi:7.4.0'
+    compileOnly 'com.github.rojo8399:PlaceholderAPI:master-SNAPSHOT'
+}
