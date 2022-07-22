@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Forge 1.12.2" type="JarApplication">
-    <option name="JAR_PATH" value="$PROJECT_DIR$/../../servers/forge-1.12.2-14.23.5.2847/forge.jar" />
-    <option name="WORKING_DIRECTORY" value="C:\Users\Ashk\Desktop\Mineaurion\servers\forge-1.12.2-14.23.5.2847" />
-    <option name="ALTERNATIVE_JRE_PATH" />
-    <method v="2" />
-  </configuration>
-</component>

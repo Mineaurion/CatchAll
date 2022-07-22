@@ -1,4 +1,4 @@
-###Available commands
+### Available commands
   **catchall:**\
     - description: Show all commands callable by CatchAll\
     - permission: catchall.cmd.help\
