@@ -53,5 +53,7 @@ subprojects {
             include(dependency('com.google.code.gson:gson'))
             include(dependency('com.github.kevinsawicki:http-request:.*'))
         }
+        relocate 'com.google.code.gson', 'com.mineaurion.catchall.lib.gson'
+        relocate 'com.github.kevinsawicki', 'com.mineaurion.catchall.lib.http-request'
     }
 }
