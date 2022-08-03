@@ -38,6 +38,7 @@ subprojects {
 
     dependencies {
         api 'com.github.kevinsawicki:http-request:6.0'
+        api 'com.google.code.gson:gson:2.8.9' // 2.9 version make sponge crash at startup
     }
 
 
@@ -53,7 +54,7 @@ subprojects {
             include(dependency('com.google.code.gson:gson'))
             include(dependency('com.github.kevinsawicki:http-request:.*'))
         }
-        relocate 'com.google.code.gson', 'com.mineaurion.catchall.lib.gson'
+        relocate 'com.google', 'com.mineaurion.catchall.lib.com.google'
         relocate 'com.github.kevinsawicki', 'com.mineaurion.catchall.lib.httprequest'
     }
 }
