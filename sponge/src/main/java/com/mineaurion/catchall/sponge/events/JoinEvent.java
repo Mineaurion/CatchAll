@@ -37,13 +37,13 @@ public class JoinEvent implements EventListener<ClientConnectionEvent.Join> {
 
         if(maintenance_state){
             if(!player.hasPermission("maintenance.bypass")){
-                throw new Exception("Servers is now in maintenance, Try later please");
+                throw new Exception("Servers is now in maintenance. Try later please");
             }
         }
 
         if(donateur_state){
             if(!player.hasPermission("mineaurion.donateur")){
-                throw new Exception("Server is now in dontor only mode. Try later please");
+                throw new Exception("Server is now in donator only mode. Try later please");
             }
         }
     }

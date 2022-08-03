@@ -46,3 +46,5 @@ jobs:
           files: |
             bukkit/build/libs/*-all.jar
             sponge/build/libs/*-all.jar
+            forge-1.16/build/libs/*-all.jar
+            forge-1.18/build/libs/*-all.jar

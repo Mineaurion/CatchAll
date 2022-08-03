@@ -29,3 +29,7 @@
   **hand:** (Sponge only)\
     - description: show item in your hand\
     - permission: catchall.cmd.hand
+
+## Forge version:
+
+Forge version have only : `/donateur`, `/maintenance` & `/glist`

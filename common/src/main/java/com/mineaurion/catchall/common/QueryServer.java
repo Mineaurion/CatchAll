@@ -30,8 +30,7 @@ public class QueryServer {
                     .append("&6")
                     .append(" (")
                     .append(server.getOnlinePlayers()).append("/").append(server.getMaxPlayers())
-                    .append(") \n")
-                    .append("&f\n");
+                    .append(") \n&f");
         }
         serversInfo.append("Total online players : ").append(totalPlayersOnline);
 

@@ -39,6 +39,10 @@ fabric.properties
 # modules.xml
 # *.ipr
 
+### ForgeGradle ###
+# Minecraft client/server files
+run/
+
 ### Gradle ###
 .gradle
 build/
