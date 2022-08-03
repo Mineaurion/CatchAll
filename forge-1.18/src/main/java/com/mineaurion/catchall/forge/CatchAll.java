@@ -8,10 +8,12 @@ import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
+import com.mineaurion.catchall.forge.listeners.TablistNameFormatListener;
 import com.mojang.brigadier.CommandDispatcher;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.query.QueryOptions;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,6 +29,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 @Mod("catchall")
@@ -62,6 +66,7 @@ public class CatchAll {
     @SubscribeEvent
     public void onServerStarting(ServerStartedEvent event){
         MinecraftForge.EVENT_BUS.register(new LoginLogoutListener());
+        MinecraftForge.EVENT_BUS.register(new TablistNameFormatListener());
     }
 
     @SubscribeEvent
@@ -80,6 +85,19 @@ public class CatchAll {
             has = user.getCachedData().getPermissionData().checkPermission(permission).asBoolean();
         }
         return has;
+    }
+
+    public static Optional<String> getMetaData(UUID uuid, String meta){
+        LuckPerms luckperms = LuckPermsProvider.get();
+        Optional<String> metaValue = Optional.empty();
+        User user = luckperms.getUserManager().getUser(uuid);
+        if(user != null){
+            Optional<QueryOptions> context = luckperms.getContextManager().getQueryOptions(user);
+            if(context.isPresent()){
+                metaValue = Optional.ofNullable(user.getCachedData().getMetaData(context.get()).getMetaValue(meta));
+            }
+        }
+        return metaValue;
     }
 
 }

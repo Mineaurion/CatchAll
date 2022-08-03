@@ -19,14 +19,10 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
-import net.minecraftforge.fml.event.server.FMLServerStoppedEvent;
 import net.minecraftforge.fml.network.FMLNetworkConstants;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 import static net.minecraftforge.fml.ExtensionPoint.DISPLAYTEST;
 
@@ -62,10 +58,6 @@ public class CatchAll {
         new MaintenanceCommand(dispatcher);
         new DonateurCommand(dispatcher);
         new GlistCommand(dispatcher);
-    }
-
-    @SubscribeEvent
-    public void serverStopped(FMLServerStoppedEvent event) throws IOException, TimeoutException {
     }
 
     public static boolean hasPermission(ServerPlayerEntity player, String permission){
