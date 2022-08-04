@@ -1,6 +1,7 @@
 package com.mineaurion.catchall.bukkit.commands;
 
 import com.mineaurion.catchall.bukkit.CatchAll;
+import com.mineaurion.catchall.common.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +28,7 @@ public class DonateurCommand implements CommandExecutor {
         Bukkit.broadcastMessage("Server state update : donator mode is now " + ((currentState) ? "disable" : "enable"));
         if (!currentState) {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.hasPermission("mineaurion.donateur")) {
+                if (!p.hasPermission(Config.Donateur.permission)) {
                     p.kickPlayer("Server is now in donator only mode. Try later please");
                     countPlayersKicked++;
                 }

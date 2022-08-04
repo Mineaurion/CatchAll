@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.forge.commands;
 
+import com.mineaurion.catchall.common.Config;
 import com.mineaurion.catchall.forge.CatchAll;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
@@ -26,7 +27,7 @@ public class MaintenanceCommand {
                             context.getSource().getServer().getPlayerList().broadcastMessage(new StringTextComponent(message), ChatType.SYSTEM, Util.NIL_UUID);
                             if(!currentState){
                                 for(ServerPlayerEntity serverPlayer: context.getSource().getServer().getPlayerList().getPlayers()){
-                                    if(!CatchAll.hasPermission(serverPlayer, "maintenance.bypass")){
+                                    if(!CatchAll.hasPermission(serverPlayer, Config.Maintenance.permission)){
                                         serverPlayer.connection.disconnect(new StringTextComponent("Server is now in maintenance only mode. Try later please"));
                                         count++;
                                     }

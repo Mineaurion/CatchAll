@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.sponge.events;
 
+import com.mineaurion.catchall.common.Config;
 import com.mineaurion.catchall.sponge.CatchAll;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.entity.living.player.Player;
@@ -27,8 +28,8 @@ public class JoinEvent implements EventListener<ClientConnectionEvent.Join> {
         int onlineCount = Sponge.getServer().getMaxPlayers();
 
         if(onlineCount >= maxPlayers - 5){
-            if(!player.hasPermission("mineaurion.donateur")){
-                throw new Exception("Last Slots are reserved to donators (and more) players");
+            if(!player.hasPermission(Config.Donateur.permission)){
+                throw new Exception(Config.Donateur.messageReservedSlot);
             }
         }
 
@@ -36,14 +37,14 @@ public class JoinEvent implements EventListener<ClientConnectionEvent.Join> {
         boolean donateur_state = plugin.getConf().get("states", "donateur").getBoolean();
 
         if(maintenance_state){
-            if(!player.hasPermission("maintenance.bypass")){
-                throw new Exception("Servers is now in maintenance. Try later please");
+            if(!player.hasPermission(Config.Maintenance.permission)){
+                throw new Exception(Config.Maintenance.message);
             }
         }
 
         if(donateur_state){
-            if(!player.hasPermission("mineaurion.donateur")){
-                throw new Exception("Server is now in donator only mode. Try later please");
+            if(!player.hasPermission(Config.Donateur.permission)){
+                throw new Exception(Config.Donateur.message);
             }
         }
     }

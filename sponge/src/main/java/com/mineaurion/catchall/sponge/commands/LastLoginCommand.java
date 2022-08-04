@@ -26,14 +26,13 @@ import java.util.*;
 public class LastLoginCommand implements CommandExecutor {
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-        // Somethings usefull huhu
         CatchAll plugin = CatchAll.getInstance();
         UserStorageService userStorage = Sponge.getServiceManager().provide(UserStorageService.class).get();
         String filename = "lastlogin";
         // Args
         Integer minMonth = args.<Integer>getOne("minMonth").orElse(0);
         Integer maxMonth = args.<Integer>getOne("maxMonth").orElse(2);
-        // Im kind hihi
+
         if (minMonth > maxMonth) {
             Integer tmp = minMonth;
             minMonth = maxMonth;
@@ -45,7 +44,7 @@ public class LastLoginCommand implements CommandExecutor {
         long minTs = calendar.getTimeInMillis();
         calendar.add(Calendar.MONTH, -maxMonth + minMonth);
         long maxTs = calendar.getTimeInMillis();
-        // Loop all offline players! shiiiiiit
+        // Loop all offline players!
         List<String> players = new ArrayList<String>();
         Collection<GameProfile> profiles = userStorage.getAll();
         for (GameProfile profile : profiles) {
@@ -66,7 +65,7 @@ public class LastLoginCommand implements CommandExecutor {
         DateFormat outputDateFormat = new SimpleDateFormat("yyyy_MM_dd");
         String directory = plugin.configDir + File.separator + filename + "s";
         String pathname = directory + File.separator + filename + "_" + outputDateFormat.format(new Date()) + "_" + minMonth + "_" + maxMonth + ".yml";
-        // Create dir if doesn't exist
+        // Create dir if it doesn't exist
         boolean created = new File(directory).mkdirs();
         if (created){
             plugin.sendMessage(Text.of("Lastlogin directory has been created!"));
@@ -84,7 +83,7 @@ public class LastLoginCommand implements CommandExecutor {
         }
 
         YAMLConfigurationLoader yml = YAMLConfigurationLoader.builder().setPath(file.toPath()).build();
-        // Try to write inside the lastlogin file built
+        // Try to write inside the last login file built
         try {
             ConfigurationNode node = yml.load();
             node.getNode("player").setValue(players);

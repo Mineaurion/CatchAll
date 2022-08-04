@@ -39,6 +39,7 @@ subprojects {
     dependencies {
         api 'com.github.kevinsawicki:http-request:6.0'
         api 'com.google.code.gson:gson:2.8.9' // 2.9 version make sponge crash at startup
+        compileOnly 'net.luckperms:api:5.4'
     }
 
 

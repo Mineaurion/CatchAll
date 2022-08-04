@@ -42,7 +42,7 @@ public class WebhookCommand implements CommandExecutor {
                 .send(parser.getMessage())
                 .body();
 
-        sender.sendMessage("Message succesfully sent to channel [" + args[0] + "]");
+        sender.sendMessage("Message successfully sent to channel [" + args[0] + "]");
         return true;
     }
 

@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.sponge.commands;
 
+import com.mineaurion.catchall.common.Config;
 import com.mineaurion.catchall.sponge.CatchAll;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandResult;
@@ -24,7 +25,7 @@ public class MaintenanceCommand implements CommandExecutor {
 
         if (!currentState) {
             for (Player p : Sponge.getServer().getOnlinePlayers()) {
-                if (!p.hasPermission("Maintenance.bypass")) {
+                if (!p.hasPermission(Config.Maintenance.permission)) {
                     p.kick(Text.of("Server is now in maintenance only mode. Try later please"));
                     countPlayersKicked++;
                 }

@@ -3,7 +3,7 @@ package com.mineaurion.catchall.common.parsers;
 import java.util.Arrays;
 
 public class DiscordMessageParser {
-    private String[] message;
+    private final String[] message;
 
     public DiscordMessageParser(String[] message) {
         this.message = message;

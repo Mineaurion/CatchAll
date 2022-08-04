@@ -1,6 +1,7 @@
 package com.mineaurion.catchall.bukkit.commands;
 
 import com.mineaurion.catchall.bukkit.CatchAll;
+import com.mineaurion.catchall.common.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,7 +29,7 @@ public class MaintenanceCommand implements CommandExecutor {
         Bukkit.broadcastMessage("Server state update : maintenance is now " + ((currentState) ? "disable" : "enable"));
         if (!currentState) {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                if (!p.hasPermission("Maintenance.bypass")) {
+                if (!p.hasPermission(Config.Maintenance.permission)) {
                     p.kickPlayer("Server is now in maintenance. Try later please");
                     countPlayersKicked++;
                 }

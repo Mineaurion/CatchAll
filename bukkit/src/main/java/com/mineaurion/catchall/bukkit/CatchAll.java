@@ -1,15 +1,17 @@
 package com.mineaurion.catchall.bukkit;
 
 import com.mineaurion.catchall.bukkit.commands.*;
-import com.mineaurion.catchall.bukkit.events.OnPlayerJoinEvent;
-import com.mineaurion.catchall.bukkit.events.OnPlayerQuitEvent;
+import com.mineaurion.catchall.bukkit.events.OnPlayerJoinQuitEvent;
+import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CatchAll extends JavaPlugin {
 
     private static CatchAll _instance = null;
+    public static LuckPerms api;
 
     public CatchAll() {
         super();
@@ -23,7 +25,13 @@ public final class CatchAll extends JavaPlugin {
     @Override
     public void onEnable() {
         sendMessage("Start plugin... ");
-        this.init();
+        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+        if(provider != null){
+            api = provider.getProvider();
+            this.init();
+        } else {
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
@@ -45,8 +53,7 @@ public final class CatchAll extends JavaPlugin {
     }
 
     private void initEvents() {
-        getServer().getPluginManager().registerEvents(new OnPlayerJoinEvent(), this);
-        getServer().getPluginManager().registerEvents(new OnPlayerQuitEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerJoinQuitEvent(), this);
     }
 
     private void initCommands() {

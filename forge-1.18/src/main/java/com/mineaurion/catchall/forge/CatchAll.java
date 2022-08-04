@@ -2,18 +2,18 @@ package com.mineaurion.catchall.forge;
 
 
 import com.electronwill.nightconfig.core.conversion.ObjectConverter;
+import com.mineaurion.catchall.common.LuckPermsUtils;
 import com.mineaurion.catchall.forge.commands.DonateurCommand;
 import com.mineaurion.catchall.forge.commands.GlistCommand;
 import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
-import com.mineaurion.catchall.forge.listeners.TablistNameFormatListener;
+import com.mineaurion.catchall.forge.listeners.TabListNameFormatListener;
 import com.mojang.brigadier.CommandDispatcher;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
-import net.luckperms.api.query.QueryOptions;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.MinecraftForge;
@@ -66,7 +66,7 @@ public class CatchAll {
     @SubscribeEvent
     public void onServerStarting(ServerStartedEvent event){
         MinecraftForge.EVENT_BUS.register(new LoginLogoutListener());
-        MinecraftForge.EVENT_BUS.register(new TablistNameFormatListener());
+        MinecraftForge.EVENT_BUS.register(new TabListNameFormatListener());
     }
 
     @SubscribeEvent
@@ -89,15 +89,7 @@ public class CatchAll {
 
     public static Optional<String> getMetaData(UUID uuid, String meta){
         LuckPerms luckperms = LuckPermsProvider.get();
-        Optional<String> metaValue = Optional.empty();
-        User user = luckperms.getUserManager().getUser(uuid);
-        if(user != null){
-            Optional<QueryOptions> context = luckperms.getContextManager().getQueryOptions(user);
-            if(context.isPresent()){
-                metaValue = Optional.ofNullable(user.getCachedData().getMetaData(context.get()).getMetaValue(meta));
-            }
-        }
-        return metaValue;
+        return LuckPermsUtils.getMetaData(luckperms, uuid, meta);
     }
 
 }

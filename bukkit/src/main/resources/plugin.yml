@@ -1,6 +1,8 @@
 name: CatchAll
 version: ${version}
 main: com.mineaurion.catchall.bukkit.CatchAll
+depend:
+  - LuckPerms
 
 commands:
   catchall:

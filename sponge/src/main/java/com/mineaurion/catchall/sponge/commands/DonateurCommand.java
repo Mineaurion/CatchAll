@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.sponge.commands;
 
+import com.mineaurion.catchall.common.Config;
 import com.mineaurion.catchall.sponge.CatchAll;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandResult;
@@ -22,7 +23,7 @@ public class DonateurCommand implements CommandExecutor {
         Sponge.getServer().getBroadcastChannel().send(Text.of("Server state update : donator mode is now " + ((currentState) ? "disable" : "enable")));
         if (!currentState) {
             for (Player p : Sponge.getServer().getOnlinePlayers()) {
-                if (!p.hasPermission("mineaurion.donateur")) {
+                if (!p.hasPermission(Config.Donateur.permission)) {
                     p.kick(Text.of("Server is now in donator only mode. Try later please"));
                     countPlayersKicked++;
                 }

@@ -49,7 +49,7 @@ public class CatchAll {
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event){
-        MinecraftForge.EVENT_BUS.register(new LoginLogoutListener(this));
+        MinecraftForge.EVENT_BUS.register(new LoginLogoutListener());
     }
 
     @SubscribeEvent
