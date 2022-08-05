@@ -66,7 +66,7 @@ public class CatchAll {
     @SubscribeEvent
     public void onServerStarting(ServerStartedEvent event){
         MinecraftForge.EVENT_BUS.register(new LoginLogoutListener());
-        MinecraftForge.EVENT_BUS.register(new TabListNameFormatListener());
+       // MinecraftForge.EVENT_BUS.register(new TabListNameFormatListener());
     }
 
     @SubscribeEvent
