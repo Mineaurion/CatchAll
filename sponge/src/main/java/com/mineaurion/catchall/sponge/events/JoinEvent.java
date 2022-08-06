@@ -25,7 +25,7 @@ public class JoinEvent implements EventListener<ClientConnectionEvent.Join> {
 
     public static void handleEvent(Player player, CatchAll plugin) throws Exception {
         int maxPlayers = Sponge.getServer().getMaxPlayers();
-        int onlineCount = Sponge.getServer().getMaxPlayers();
+        int onlineCount = Sponge.getServer().getOnlinePlayers().size();
 
         if(onlineCount >= maxPlayers - 5){
             if(!player.hasPermission(Config.Donateur.permission)){
