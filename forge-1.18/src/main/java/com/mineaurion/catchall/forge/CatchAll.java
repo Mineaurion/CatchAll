@@ -38,6 +38,8 @@ public class CatchAll {
     public static ConfigData config;
     public static final Logger logger = LogManager.getLogger();
 
+    public static LuckPerms luckPerms = null;
+
     public CatchAll() {
         logger.info("CatchAll Initializing");
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
@@ -65,7 +67,8 @@ public class CatchAll {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartedEvent event){
-        MinecraftForge.EVENT_BUS.register(new LoginLogoutListener());
+        luckPerms = LuckPermsProvider.get();
+        MinecraftForge.EVENT_BUS.register(new LoginLogoutListener(event.getServer().getScoreboard()));
        // MinecraftForge.EVENT_BUS.register(new TabListNameFormatListener());
     }
 
@@ -78,7 +81,6 @@ public class CatchAll {
     }
 
     public static boolean hasPermission(ServerPlayer player, String permission){
-        LuckPerms luckPerms = LuckPermsProvider.get();
         boolean has = false;
         User user = luckPerms.getUserManager().getUser(player.getUUID());
         if(user != null){
@@ -88,8 +90,7 @@ public class CatchAll {
     }
 
     public static Optional<String> getMetaData(UUID uuid, String meta){
-        LuckPerms luckperms = LuckPermsProvider.get();
-        return LuckPermsUtils.getMetaData(luckperms, uuid, meta);
+        return LuckPermsUtils.getMetaData(luckPerms, uuid, meta);
     }
 
 }
