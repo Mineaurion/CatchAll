@@ -9,7 +9,6 @@ import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
-import com.mineaurion.catchall.forge.listeners.TabListNameFormatListener;
 import com.mojang.brigadier.CommandDispatcher;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
