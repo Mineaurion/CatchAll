@@ -48,7 +48,7 @@ public class LoginLogoutListener {
 
     @SubscribeEvent
     public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent event){
-        leavingScoreBoard((ServerPlayer) event.getPlayer());
+        // leavingScoreBoard((ServerPlayer) event.getPlayer());
     }
 
     private void updateScoreBoard(ServerPlayer player){
