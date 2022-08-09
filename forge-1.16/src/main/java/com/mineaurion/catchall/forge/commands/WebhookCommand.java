@@ -41,7 +41,7 @@ public class WebhookCommand {
     }
 
     private int sendWebhook(CommandSource source, Integer channel, String message){
-        DiscordMessageParser parser = new DiscordMessageParser(message);
+        DiscordMessageParser parser = new DiscordMessageParser(message.split(" "));
         try {
             int realChannel = channel - 1;
             parser.send(CatchAll.config.webhook.discord.get().get(realChannel));
