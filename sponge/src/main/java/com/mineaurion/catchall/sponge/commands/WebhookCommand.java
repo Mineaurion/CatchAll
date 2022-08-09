@@ -1,6 +1,5 @@
 package com.mineaurion.catchall.sponge.commands;
 
-import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.common.parsers.DiscordMessageParser;
 import com.mineaurion.catchall.sponge.CatchAll;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
@@ -17,6 +16,7 @@ public class WebhookCommand implements CommandExecutor {
     public CommandResult execute(CommandSource src, CommandContext args) {
         CatchAll plugin = CatchAll.getInstance();
         String channel = args.<String>getOne("channel").get();
+        String message = args.<String>getOne("message").get();
 
         Map<Object, ? extends CommentedConfigurationNode> channels = plugin.getConf().get("webhook", "discord").getChildrenMap();
 
@@ -25,21 +25,16 @@ public class WebhookCommand implements CommandExecutor {
             return CommandResult.empty();
         }
 
-        String message = args.<String>getOne("message").get();
-        if (message.isEmpty()) {
-            src.sendMessage(Text.of("Invalid discord webhook format"));
-            return CommandResult.empty();
-        }
-
         DiscordMessageParser parser = new DiscordMessageParser(message);
 
-        HttpRequest.post(channels.get(channel).getString())
-                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
-                .contentType("application/json")
-                .send(parser.getMessage())
-                .body();
+        try {
+            parser.send(channel);
+            src.sendMessage(Text.of("Message succesfully sent to channel [" + channel + "]"));
+            return CommandResult.success();
+        } catch (Exception e){
+            src.sendMessage(Text.of("Invalid discord webhook format"));
+        }
 
-        src.sendMessage(Text.of("Message succesfully sent to channel [" + channel + "]"));
-        return CommandResult.success();
+        return CommandResult.empty();
     }
 }

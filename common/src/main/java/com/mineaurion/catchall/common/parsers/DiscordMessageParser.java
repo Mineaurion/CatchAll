@@ -1,5 +1,7 @@
 package com.mineaurion.catchall.common.parsers;
 
+import com.github.kevinsawicki.http.HttpRequest;
+
 import java.util.Arrays;
 
 public class DiscordMessageParser {
@@ -32,6 +34,19 @@ public class DiscordMessageParser {
         }
 
         return "{\"content\": \"" + String.join(" ", this.message) + "\"}";
+    }
+
+    public String send(String channel) throws Exception {
+        if(!isValid()){
+            throw new Exception("Invalid discord webhook format");
+        }
+
+        return HttpRequest.post(channel)
+                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
+                .contentType("application/json")
+                .send(getMessage())
+                .body();
+
     }
 
 }

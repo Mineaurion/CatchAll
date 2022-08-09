@@ -1,6 +1,5 @@
 package com.mineaurion.catchall.bukkit.commands;
 
-import com.github.kevinsawicki.http.HttpRequest;
 import com.mineaurion.catchall.bukkit.CatchAll;
 import com.mineaurion.catchall.common.parsers.DiscordMessageParser;
 import org.bukkit.command.Command;
@@ -31,18 +30,13 @@ public class WebhookCommand implements CommandExecutor {
 
         DiscordMessageParser parser = new DiscordMessageParser(Arrays.copyOfRange(args, 1, args.length));
 
-        if (!parser.isValid()) {
-            sender.sendMessage("Invalid discord webhook format");
-            return true;
+        try {
+            parser.send(channel);
+            sender.sendMessage("Message successfully sent to channel [" + args[0] + "]");
+        } catch (Exception e) {
+            sender.sendMessage(e.getMessage());
         }
 
-        HttpRequest.post(channel)
-                .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
-                .contentType("application/json")
-                .send(parser.getMessage())
-                .body();
-
-        sender.sendMessage("Message successfully sent to channel [" + args[0] + "]");
         return true;
     }
 

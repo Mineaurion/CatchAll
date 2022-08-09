@@ -6,6 +6,7 @@ import com.mineaurion.catchall.common.LuckPermsUtils;
 import com.mineaurion.catchall.forge.commands.DonateurCommand;
 import com.mineaurion.catchall.forge.commands.GlistCommand;
 import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
+import com.mineaurion.catchall.forge.commands.WebhookCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
@@ -68,7 +69,6 @@ public class CatchAll {
     public void onServerStarting(ServerStartedEvent event){
         luckPerms = LuckPermsProvider.get();
         MinecraftForge.EVENT_BUS.register(new LoginLogoutListener(event.getServer().getScoreboard()));
-       // MinecraftForge.EVENT_BUS.register(new TabListNameFormatListener());
     }
 
     @SubscribeEvent
@@ -77,6 +77,7 @@ public class CatchAll {
         new MaintenanceCommand(dispatcher);
         new DonateurCommand(dispatcher);
         new GlistCommand(dispatcher);
+        new WebhookCommand(dispatcher);
     }
 
     public static boolean hasPermission(ServerPlayer player, String permission){

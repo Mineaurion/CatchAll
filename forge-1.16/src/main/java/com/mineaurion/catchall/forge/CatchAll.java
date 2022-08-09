@@ -5,6 +5,7 @@ import com.electronwill.nightconfig.core.conversion.ObjectConverter;
 import com.mineaurion.catchall.forge.commands.DonateurCommand;
 import com.mineaurion.catchall.forge.commands.GlistCommand;
 import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
+import com.mineaurion.catchall.forge.commands.WebhookCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
@@ -58,6 +59,7 @@ public class CatchAll {
         new MaintenanceCommand(dispatcher);
         new DonateurCommand(dispatcher);
         new GlistCommand(dispatcher);
+        new WebhookCommand(dispatcher);
     }
 
     public static boolean hasPermission(ServerPlayerEntity player, String permission){
