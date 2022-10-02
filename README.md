@@ -30,3 +30,7 @@
 - hand: (Sponge only)
   - description: show item in your hand
   - permission: catchall.cmd.hand
+  
+  Permissions setup with Luckperms : 
+  - donateur : `mineaurion.donateur`
+  - maintenance : `mineaurion.bypass`
