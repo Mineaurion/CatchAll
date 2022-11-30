@@ -28,17 +28,28 @@ public class MenupageCommand {
                 .executes((cmdcntxt) -> {
                         String s = StringArgumentType.getString(cmdcntxt, "page");
                         Player player = cmdcntxt.getSource().getPlayerOrException();
-                        Page.createPage(player, ConfigPage.getPage().get(s));
+                        createPage(player, ConfigPage.getPage().get(s));
                         return 1;
                 })
                 .then(Commands.argument("player", EntityArgument.players()).executes(context -> {
                         String s = StringArgumentType.getString(context, "page");
                         Collection<ServerPlayer> clctplayer = EntityArgument.getPlayers(context, "player");
                         for(ServerPlayer player : clctplayer){
-                            Page.createPage(player, ConfigPage.getPage().get(s));
+                            createPage(player, ConfigPage.getPage().get(s));
                         }
                             return 1;
                 }))));
         dispatcher.register(Commands.literal("mpage").redirect(literalcommandnode));
+    }
+        public static boolean createPage(Player player, Page page) {
+        MutableComponent message = new TextComponent("");
+        message.append(MchatCommand.buildtext(page.getTitle())).append("\n");
+        message.append(MchatCommand.buildtext(page.getHeader())).append("\n");
+        for (String s : page.getContent()){
+            message.append(MchatCommand.buildtext(s)).append("\n");
+        }
+        message.append(MchatCommand.buildtext(page.getFooter()));
+        player.sendMessage(message, Util.NIL_UUID);
+        return true;
     }
 }
