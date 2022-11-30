@@ -7,7 +7,6 @@ import com.mojang.logging.LogUtils;
 import com.mineaurion.catchall.forge.utils.Page;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -62,7 +61,7 @@ public abstract class ConfigPage {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                LOGGER.info("[MenuPage] Successfully created MenuPage.json");
+                LOGGER.info("[AurionChat] Successfully created MenuPage.json");
             }
     }
 }

@@ -8,8 +8,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.level.ServerPlayer;
-
-
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;

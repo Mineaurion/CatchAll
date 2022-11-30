@@ -13,6 +13,7 @@ import com.mineaurion.catchall.forge.commands.MenupageCommand;
 import com.mineaurion.catchall.forge.commands.WebhookCommand;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
+import com.mineaurion.catchall.forge.config.ConfigPage;
 import com.mineaurion.catchall.forge.listeners.LoginLogoutListener;
 import com.mojang.brigadier.CommandDispatcher;
 import net.luckperms.api.LuckPerms;
@@ -31,7 +32,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.network.NetworkConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 import java.util.UUID;
@@ -68,9 +68,10 @@ public class CatchAll {
 
 
     }
-
+    
     @SubscribeEvent
     public void onServerStarting(ServerStartedEvent event){
+        ConfigPage.createFile(ConfigPage.getPath());
         luckPerms = LuckPermsProvider.get();
         MinecraftForge.EVENT_BUS.register(new LoginLogoutListener(event.getServer().getScoreboard()));
     }

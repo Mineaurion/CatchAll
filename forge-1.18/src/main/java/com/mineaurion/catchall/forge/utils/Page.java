@@ -7,7 +7,6 @@ import net.minecraft.Util;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.player.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -8,8 +8,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-
-
 import java.lang.management.ManagementFactory;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
