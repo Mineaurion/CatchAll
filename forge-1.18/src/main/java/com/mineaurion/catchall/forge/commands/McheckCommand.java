@@ -1,5 +1,6 @@
 package com.mineaurion.catchall.forge.commands;
 
+import com.mineaurion.catchall.forge.utils.TextParser;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.Util;
 import net.minecraft.commands.CommandSourceStack;
@@ -15,7 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
-import static com.mineaurion.catchall.forge.commands.MchatCommand.buildtext;
 
 public class McheckCommand {
 
@@ -52,7 +52,7 @@ public class McheckCommand {
                 }
 
                 finalstring = finalstring + "&aOverall" + " &0|&d " + TIME_FORMATTER.format(meanTickTime) + " &0|&e " + TIME_FORMATTER.format(meanTPS) + " &0|&b " + allentitiescounter + " &0|&c " + allchunkscounter;
-                player.sendMessage(buildtext(finalstring), Util.NIL_UUID);
+                player.sendMessage(TextParser.buildtext(finalstring), Util.NIL_UUID);
             return 1;
         }));
     }

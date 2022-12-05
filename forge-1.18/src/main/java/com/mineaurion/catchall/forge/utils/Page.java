@@ -2,13 +2,10 @@ package com.mineaurion.catchall.forge.utils;
 
 
 
-import com.mineaurion.catchall.forge.commands.MchatCommand;
-import net.minecraft.Util;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.entity.player.Player;
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Page {
     private final String title;
@@ -42,7 +39,8 @@ public class Page {
     public static Page example(){
         String title = "---Example Title---";
         String header = "Example Header";
-        List<String> content = new ArrayList<>(List.of("line1","line2","line3"));
+        List<String> content = Stream.of("line1","line2","line3")
+                                     .collect(Collectors.toList());
         String footer = "Example Footer";
 
         return new Page(title, header, content, footer);
