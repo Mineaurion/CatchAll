@@ -1,0 +1,36 @@
+{
+  "loader": {
+    "name": "java_plain",
+    "version": "1.0"
+  },
+  "license": "GNU General Public License v3.0",
+  "plugins": [
+    {
+      "id": "catchall",
+      "entrypoint": "com.mineaurion.catchall.sponge.CatchAll",
+      "name": "CatchAll",
+      "description": "Mineaurion Utils",
+      "version": "1.0",
+      "branding": {},
+      "links": {
+        "homepage": "https://mineaurion.com/",
+        "source": "https://github.com/Mineaurion/CatchAll",
+        "issues": "https://github.com/Mineaurion/CatchAll/issues"
+      },
+      "contributors": [
+        {
+          "name": "Yann151924",
+          "description": "Lead Developer"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "spongeapi",
+          "version": "7.4.0",
+          "load-order": "after",
+          "optional": false
+        }
+      ]
+    }
+  ]
+}
