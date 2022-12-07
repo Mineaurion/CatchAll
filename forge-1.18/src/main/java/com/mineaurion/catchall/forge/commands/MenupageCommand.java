@@ -27,7 +27,7 @@ public class MenupageCommand {
                             })
                             .executes((cmdcntxt) -> {
                                 String s = StringArgumentType.getString(cmdcntxt, "page");
-                                Player player = cmdcntxt.getSource().getPlayerOrException();
+                                ServerPlayer player = cmdcntxt.getSource().getPlayerOrException();
                                 createPage(player, ConfigPage.getPage().get(s));
                                 return 1;
                             })
@@ -42,7 +42,7 @@ public class MenupageCommand {
             dispatcher.register(Commands.literal("mpage").redirect(literalcommandnode));
         }
 
-        public static boolean createPage(Player player, Page page) {
+        public static boolean createPage(ServerPlayer player, Page page) {
             String message = (page.getTitle() + "\n")
                     + (page.getHeader() + "\n");
             for (String s : page.getContent()){

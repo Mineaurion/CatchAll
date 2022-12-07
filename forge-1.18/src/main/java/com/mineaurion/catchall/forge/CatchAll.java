@@ -3,14 +3,7 @@ package com.mineaurion.catchall.forge;
 
 import com.electronwill.nightconfig.core.conversion.ObjectConverter;
 import com.mineaurion.catchall.common.LuckPermsUtils;
-import com.mineaurion.catchall.forge.commands.DonateurCommand;
-import com.mineaurion.catchall.forge.commands.GlistCommand;
-import com.mineaurion.catchall.forge.commands.HandCommand;
-import com.mineaurion.catchall.forge.commands.MaintenanceCommand;
-import com.mineaurion.catchall.forge.commands.MchatCommand;
-import com.mineaurion.catchall.forge.commands.McheckCommand;
-import com.mineaurion.catchall.forge.commands.MenupageCommand;
-import com.mineaurion.catchall.forge.commands.WebhookCommand;
+import com.mineaurion.catchall.forge.commands.*;
 import com.mineaurion.catchall.forge.config.Config;
 import com.mineaurion.catchall.forge.config.ConfigData;
 import com.mineaurion.catchall.forge.config.ConfigPage;
@@ -87,6 +80,7 @@ public class CatchAll {
         new MchatCommand(dispatcher);
         new McheckCommand(dispatcher);
         new MenupageCommand(dispatcher);
+        new IteminfoCommand(dispatcher);
     }
 
     public static boolean hasPermission(ServerPlayer player, String permission){
